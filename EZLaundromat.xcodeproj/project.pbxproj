@@ -1,0 +1,565 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		220322762B9C8F7B004F6BCF /* EZLaundromatApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220322752B9C8F7B004F6BCF /* EZLaundromatApp.swift */; };
+		220322782B9C8F7B004F6BCF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220322772B9C8F7B004F6BCF /* ContentView.swift */; };
+		2203227A2B9C8F7C004F6BCF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 220322792B9C8F7C004F6BCF /* Assets.xcassets */; };
+		2203227D2B9C8F7C004F6BCF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2203227C2B9C8F7C004F6BCF /* Preview Assets.xcassets */; };
+		220322882B9C9554004F6BCF /* StaggeredGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220322872B9C9554004F6BCF /* StaggeredGrid.swift */; };
+		2203228A2B9C9564004F6BCF /* EZHomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220322892B9C9564004F6BCF /* EZHomeViewModel.swift */; };
+		220322912B9C960D004F6BCF /* CustomCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220322902B9C960D004F6BCF /* CustomCorners.swift */; };
+		220322932B9C9624004F6BCF /* MoreProductsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220322922B9C9624004F6BCF /* MoreProductsView.swift */; };
+		220322992B9C98CD004F6BCF /* Raleway-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 220322982B9C98CD004F6BCF /* Raleway-SemiBold.ttf */; };
+		2203229B2B9C98F7004F6BCF /* Raleway-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2203229A2B9C98F7004F6BCF /* Raleway-Regular.ttf */; };
+		2203229D2B9C9926004F6BCF /* Raleway-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2203229C2B9C9926004F6BCF /* Raleway-Bold.ttf */; };
+		2203229F2B9C9938004F6BCF /* Raleway-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2203229E2B9C9938004F6BCF /* Raleway-ExtraBold.ttf */; };
+		220322A12B9C9A00004F6BCF /* EZSharedDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220322A02B9C9A00004F6BCF /* EZSharedDataModel.swift */; };
+		220322A62B9C9B90004F6BCF /* UniversalAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220322A52B9C9B90004F6BCF /* UniversalAlert.swift */; };
+		220322A82B9C9BAB004F6BCF /* EZProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220322A72B9C9BAB004F6BCF /* EZProduct.swift */; };
+		220322AA2B9C9CD0004F6BCF /* EZProductDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220322A92B9C9CD0004F6BCF /* EZProductDetailView.swift */; };
+		220322AC2B9C9CE7004F6BCF /* EZCartPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220322AB2B9C9CE7004F6BCF /* EZCartPage.swift */; };
+		220322AE2B9C9CF0004F6BCF /* EZHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220322AD2B9C9CF0004F6BCF /* EZHome.swift */; };
+		220322B02B9C9CFB004F6BCF /* EZMainPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220322AF2B9C9CFB004F6BCF /* EZMainPage.swift */; };
+		220322B22B9C9D09004F6BCF /* EZProfilePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220322B12B9C9D09004F6BCF /* EZProfilePage.swift */; };
+		220322B42B9C9D19004F6BCF /* EZLikedPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220322B32B9C9D19004F6BCF /* EZLikedPage.swift */; };
+		220322BA2B9C9FE0004F6BCF /* View+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220322B92B9C9FE0004F6BCF /* View+extensions.swift */; };
+		220322BC2B9CA052004F6BCF /* EZSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220322BB2B9CA052004F6BCF /* EZSearchView.swift */; };
+		220322BE2B9CAEBD004F6BCF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 220322BD2B9CAEBD004F6BCF /* GoogleService-Info.plist */; };
+		220322C12B9CB032004F6BCF /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 220322C02B9CB032004F6BCF /* Lottie */; };
+		220322CF2B9CB0D0004F6BCF /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 220322CE2B9CB0D0004F6BCF /* FirebaseAuth */; };
+		220322D12B9CB113004F6BCF /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220322D02B9CB113004F6BCF /* Login.swift */; };
+		220322D32B9D1882004F6BCF /* EmailAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = 220322D22B9D1882004F6BCF /* EmailAnimation.json */; };
+		220322D52B9E548D004F6BCF /* Helvetica Condensed Oblique.otf in Resources */ = {isa = PBXBuildFile; fileRef = 220322D42B9E548D004F6BCF /* Helvetica Condensed Oblique.otf */; };
+		220322D72B9E54AF004F6BCF /* Helvetica Black Condensed.otf in Resources */ = {isa = PBXBuildFile; fileRef = 220322D62B9E54AF004F6BCF /* Helvetica Black Condensed.otf */; };
+		220322D92B9E54CB004F6BCF /* Helvetica Black Condensed Oblique.otf in Resources */ = {isa = PBXBuildFile; fileRef = 220322D82B9E54CB004F6BCF /* Helvetica Black Condensed Oblique.otf */; };
+		220322DB2B9E54F3004F6BCF /* Helvetica CE Narrow.otf in Resources */ = {isa = PBXBuildFile; fileRef = 220322DA2B9E54F3004F6BCF /* Helvetica CE Narrow.otf */; };
+		220322DD2B9E55A7004F6BCF /* Helvetica Bold Condensed Oblique.otf in Resources */ = {isa = PBXBuildFile; fileRef = 220322DC2B9E55A7004F6BCF /* Helvetica Bold Condensed Oblique.otf */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		220322722B9C8F7B004F6BCF /* EZLaundromat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EZLaundromat.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		220322752B9C8F7B004F6BCF /* EZLaundromatApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EZLaundromatApp.swift; sourceTree = "<group>"; };
+		220322772B9C8F7B004F6BCF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		220322792B9C8F7C004F6BCF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		2203227C2B9C8F7C004F6BCF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		220322872B9C9554004F6BCF /* StaggeredGrid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaggeredGrid.swift; sourceTree = "<group>"; };
+		220322892B9C9564004F6BCF /* EZHomeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EZHomeViewModel.swift; sourceTree = "<group>"; };
+		220322902B9C960D004F6BCF /* CustomCorners.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCorners.swift; sourceTree = "<group>"; };
+		220322922B9C9624004F6BCF /* MoreProductsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreProductsView.swift; sourceTree = "<group>"; };
+		220322982B9C98CD004F6BCF /* Raleway-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Raleway-SemiBold.ttf"; path = "../../../../Downloads/Raleway/static/Raleway-SemiBold.ttf"; sourceTree = "<group>"; };
+		2203229A2B9C98F7004F6BCF /* Raleway-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Raleway-Regular.ttf"; path = "../../../../Downloads/Raleway/static/Raleway-Regular.ttf"; sourceTree = "<group>"; };
+		2203229C2B9C9926004F6BCF /* Raleway-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Raleway-Bold.ttf"; path = "../../../../Downloads/Raleway/static/Raleway-Bold.ttf"; sourceTree = "<group>"; };
+		2203229E2B9C9938004F6BCF /* Raleway-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-ExtraBold.ttf"; sourceTree = "<group>"; };
+		220322A02B9C9A00004F6BCF /* EZSharedDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EZSharedDataModel.swift; sourceTree = "<group>"; };
+		220322A52B9C9B90004F6BCF /* UniversalAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UniversalAlert.swift; sourceTree = "<group>"; };
+		220322A72B9C9BAB004F6BCF /* EZProduct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EZProduct.swift; sourceTree = "<group>"; };
+		220322A92B9C9CD0004F6BCF /* EZProductDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EZProductDetailView.swift; sourceTree = "<group>"; };
+		220322AB2B9C9CE7004F6BCF /* EZCartPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EZCartPage.swift; sourceTree = "<group>"; };
+		220322AD2B9C9CF0004F6BCF /* EZHome.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EZHome.swift; sourceTree = "<group>"; };
+		220322AF2B9C9CFB004F6BCF /* EZMainPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EZMainPage.swift; path = EZ/EZMainPage.swift; sourceTree = "<group>"; };
+		220322B12B9C9D09004F6BCF /* EZProfilePage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EZProfilePage.swift; sourceTree = "<group>"; };
+		220322B32B9C9D19004F6BCF /* EZLikedPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EZLikedPage.swift; sourceTree = "<group>"; };
+		220322B92B9C9FE0004F6BCF /* View+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+extensions.swift"; sourceTree = "<group>"; };
+		220322BB2B9CA052004F6BCF /* EZSearchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EZSearchView.swift; sourceTree = "<group>"; };
+		220322BD2B9CAEBD004F6BCF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		220322D02B9CB113004F6BCF /* Login.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
+		220322D22B9D1882004F6BCF /* EmailAnimation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = EmailAnimation.json; sourceTree = "<group>"; };
+		220322D42B9E548D004F6BCF /* Helvetica Condensed Oblique.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Helvetica Condensed Oblique.otf"; sourceTree = "<group>"; };
+		220322D62B9E54AF004F6BCF /* Helvetica Black Condensed.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Helvetica Black Condensed.otf"; sourceTree = "<group>"; };
+		220322D82B9E54CB004F6BCF /* Helvetica Black Condensed Oblique.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Helvetica Black Condensed Oblique.otf"; sourceTree = "<group>"; };
+		220322DA2B9E54F3004F6BCF /* Helvetica CE Narrow.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Helvetica CE Narrow.otf"; sourceTree = "<group>"; };
+		220322DC2B9E55A7004F6BCF /* Helvetica Bold Condensed Oblique.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Helvetica Bold Condensed Oblique.otf"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2203226F2B9C8F7B004F6BCF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				220322C12B9CB032004F6BCF /* Lottie in Frameworks */,
+				220322CF2B9CB0D0004F6BCF /* FirebaseAuth in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		220322692B9C8F7B004F6BCF = {
+			isa = PBXGroup;
+			children = (
+				220322BD2B9CAEBD004F6BCF /* GoogleService-Info.plist */,
+				220322D22B9D1882004F6BCF /* EmailAnimation.json */,
+				220322742B9C8F7B004F6BCF /* EZLaundromat */,
+				220322732B9C8F7B004F6BCF /* Products */,
+				220322CD2B9CB0D0004F6BCF /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		220322732B9C8F7B004F6BCF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				220322722B9C8F7B004F6BCF /* EZLaundromat.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		220322742B9C8F7B004F6BCF /* EZLaundromat */ = {
+			isa = PBXGroup;
+			children = (
+				220322A42B9C9B81004F6BCF /* Alerts */,
+				220322942B9C9636004F6BCF /* Fonts */,
+				2203228B2B9C9574004F6BCF /* Login */,
+				220322862B9C9529004F6BCF /* Helpers */,
+				220322852B9C9513004F6BCF /* ViewModels */,
+				220322842B9C94FF004F6BCF /* Views */,
+				220322832B9C94E0004F6BCF /* Models */,
+				220322752B9C8F7B004F6BCF /* EZLaundromatApp.swift */,
+				220322772B9C8F7B004F6BCF /* ContentView.swift */,
+				220322792B9C8F7C004F6BCF /* Assets.xcassets */,
+				2203227B2B9C8F7C004F6BCF /* Preview Content */,
+			);
+			path = EZLaundromat;
+			sourceTree = "<group>";
+		};
+		2203227B2B9C8F7C004F6BCF /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				2203227C2B9C8F7C004F6BCF /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		220322832B9C94E0004F6BCF /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				220322A72B9C9BAB004F6BCF /* EZProduct.swift */,
+				220322A02B9C9A00004F6BCF /* EZSharedDataModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		220322842B9C94FF004F6BCF /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				220322BB2B9CA052004F6BCF /* EZSearchView.swift */,
+				220322B32B9C9D19004F6BCF /* EZLikedPage.swift */,
+				220322B12B9C9D09004F6BCF /* EZProfilePage.swift */,
+				220322AF2B9C9CFB004F6BCF /* EZMainPage.swift */,
+				220322AD2B9C9CF0004F6BCF /* EZHome.swift */,
+				220322AB2B9C9CE7004F6BCF /* EZCartPage.swift */,
+				220322A92B9C9CD0004F6BCF /* EZProductDetailView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		220322852B9C9513004F6BCF /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				220322892B9C9564004F6BCF /* EZHomeViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		220322862B9C9529004F6BCF /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				220322922B9C9624004F6BCF /* MoreProductsView.swift */,
+				220322902B9C960D004F6BCF /* CustomCorners.swift */,
+				220322872B9C9554004F6BCF /* StaggeredGrid.swift */,
+				220322B92B9C9FE0004F6BCF /* View+extensions.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		2203228B2B9C9574004F6BCF /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				220322D02B9CB113004F6BCF /* Login.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		220322942B9C9636004F6BCF /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				220322DC2B9E55A7004F6BCF /* Helvetica Bold Condensed Oblique.otf */,
+				220322DA2B9E54F3004F6BCF /* Helvetica CE Narrow.otf */,
+				220322D82B9E54CB004F6BCF /* Helvetica Black Condensed Oblique.otf */,
+				220322D62B9E54AF004F6BCF /* Helvetica Black Condensed.otf */,
+				220322D42B9E548D004F6BCF /* Helvetica Condensed Oblique.otf */,
+				2203229E2B9C9938004F6BCF /* Raleway-ExtraBold.ttf */,
+				2203229C2B9C9926004F6BCF /* Raleway-Bold.ttf */,
+				2203229A2B9C98F7004F6BCF /* Raleway-Regular.ttf */,
+				220322982B9C98CD004F6BCF /* Raleway-SemiBold.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		220322A42B9C9B81004F6BCF /* Alerts */ = {
+			isa = PBXGroup;
+			children = (
+				220322A52B9C9B90004F6BCF /* UniversalAlert.swift */,
+			);
+			path = Alerts;
+			sourceTree = "<group>";
+		};
+		220322CD2B9CB0D0004F6BCF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		220322712B9C8F7B004F6BCF /* EZLaundromat */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 220322802B9C8F7C004F6BCF /* Build configuration list for PBXNativeTarget "EZLaundromat" */;
+			buildPhases = (
+				2203226E2B9C8F7B004F6BCF /* Sources */,
+				2203226F2B9C8F7B004F6BCF /* Frameworks */,
+				220322702B9C8F7B004F6BCF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = EZLaundromat;
+			packageProductDependencies = (
+				220322C02B9CB032004F6BCF /* Lottie */,
+				220322CE2B9CB0D0004F6BCF /* FirebaseAuth */,
+			);
+			productName = EZLaundromat;
+			productReference = 220322722B9C8F7B004F6BCF /* EZLaundromat.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2203226A2B9C8F7B004F6BCF /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1520;
+				LastUpgradeCheck = 1520;
+				TargetAttributes = {
+					220322712B9C8F7B004F6BCF = {
+						CreatedOnToolsVersion = 15.2;
+					};
+				};
+			};
+			buildConfigurationList = 2203226D2B9C8F7B004F6BCF /* Build configuration list for PBXProject "EZLaundromat" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 220322692B9C8F7B004F6BCF;
+			packageReferences = (
+				220322BF2B9CB032004F6BCF /* XCRemoteSwiftPackageReference "lottie-ios" */,
+				220322C22B9CB05A004F6BCF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
+			productRefGroup = 220322732B9C8F7B004F6BCF /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				220322712B9C8F7B004F6BCF /* EZLaundromat */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		220322702B9C8F7B004F6BCF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2203227D2B9C8F7C004F6BCF /* Preview Assets.xcassets in Resources */,
+				220322D72B9E54AF004F6BCF /* Helvetica Black Condensed.otf in Resources */,
+				220322DD2B9E55A7004F6BCF /* Helvetica Bold Condensed Oblique.otf in Resources */,
+				2203229D2B9C9926004F6BCF /* Raleway-Bold.ttf in Resources */,
+				2203229B2B9C98F7004F6BCF /* Raleway-Regular.ttf in Resources */,
+				220322D52B9E548D004F6BCF /* Helvetica Condensed Oblique.otf in Resources */,
+				220322D92B9E54CB004F6BCF /* Helvetica Black Condensed Oblique.otf in Resources */,
+				220322D32B9D1882004F6BCF /* EmailAnimation.json in Resources */,
+				220322BE2B9CAEBD004F6BCF /* GoogleService-Info.plist in Resources */,
+				220322DB2B9E54F3004F6BCF /* Helvetica CE Narrow.otf in Resources */,
+				220322992B9C98CD004F6BCF /* Raleway-SemiBold.ttf in Resources */,
+				2203227A2B9C8F7C004F6BCF /* Assets.xcassets in Resources */,
+				2203229F2B9C9938004F6BCF /* Raleway-ExtraBold.ttf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2203226E2B9C8F7B004F6BCF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				220322AE2B9C9CF0004F6BCF /* EZHome.swift in Sources */,
+				220322B42B9C9D19004F6BCF /* EZLikedPage.swift in Sources */,
+				2203228A2B9C9564004F6BCF /* EZHomeViewModel.swift in Sources */,
+				220322B22B9C9D09004F6BCF /* EZProfilePage.swift in Sources */,
+				220322912B9C960D004F6BCF /* CustomCorners.swift in Sources */,
+				220322782B9C8F7B004F6BCF /* ContentView.swift in Sources */,
+				220322BA2B9C9FE0004F6BCF /* View+extensions.swift in Sources */,
+				220322B02B9C9CFB004F6BCF /* EZMainPage.swift in Sources */,
+				220322A12B9C9A00004F6BCF /* EZSharedDataModel.swift in Sources */,
+				220322A82B9C9BAB004F6BCF /* EZProduct.swift in Sources */,
+				220322882B9C9554004F6BCF /* StaggeredGrid.swift in Sources */,
+				220322BC2B9CA052004F6BCF /* EZSearchView.swift in Sources */,
+				220322762B9C8F7B004F6BCF /* EZLaundromatApp.swift in Sources */,
+				220322A62B9C9B90004F6BCF /* UniversalAlert.swift in Sources */,
+				220322AC2B9C9CE7004F6BCF /* EZCartPage.swift in Sources */,
+				220322D12B9CB113004F6BCF /* Login.swift in Sources */,
+				220322AA2B9C9CD0004F6BCF /* EZProductDetailView.swift in Sources */,
+				220322932B9C9624004F6BCF /* MoreProductsView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		2203227E2B9C8F7C004F6BCF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		2203227F2B9C8F7C004F6BCF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		220322812B9C8F7C004F6BCF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"EZLaundromat/Preview Content\"";
+				DEVELOPMENT_TEAM = SC6R6MV2N8;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "-";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		220322822B9C8F7C004F6BCF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"EZLaundromat/Preview Content\"";
+				DEVELOPMENT_TEAM = SC6R6MV2N8;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "-";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2203226D2B9C8F7B004F6BCF /* Build configuration list for PBXProject "EZLaundromat" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2203227E2B9C8F7C004F6BCF /* Debug */,
+				2203227F2B9C8F7C004F6BCF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		220322802B9C8F7C004F6BCF /* Build configuration list for PBXNativeTarget "EZLaundromat" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				220322812B9C8F7C004F6BCF /* Debug */,
+				220322822B9C8F7C004F6BCF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		220322BF2B9CB032004F6BCF /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.4.1;
+			};
+		};
+		220322C22B9CB05A004F6BCF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.22.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		220322C02B9CB032004F6BCF /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 220322BF2B9CB032004F6BCF /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
+		};
+		220322CE2B9CB0D0004F6BCF /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 220322C22B9CB05A004F6BCF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 2203226A2B9C8F7B004F6BCF /* Project object */;
+}
