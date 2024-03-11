@@ -20,6 +20,10 @@ struct Login: View {
     /// Alert Properties
     @State private var alertMessage: String = ""
     @State private var showAlert: Bool = false
+    // Forgot Password Properties
+    @State private var showResetAlert: Bool = false
+    @State private var resetEmailAddress: String = ""
+    
     // Userdefaults
     @AppStorage("log_status") private var logStatus: Bool = false
     var body: some View {
@@ -53,6 +57,7 @@ struct Login: View {
                         VStack(alignment: .trailing, spacing: 12, content: {
                             if activeTab == .login {
                                 Button("Forgot Password?") {
+                                    showResetAlert = true
                                     
                                 }
                                 .font(.caption)
@@ -92,6 +97,16 @@ struct Login: View {
             })
             .alert(alertMessage, isPresented: $showAlert, actions: {
                 
+            })
+            .alert("Reset Password", isPresented: $showResetAlert, actions: {
+                TextField("Email Address", text: $resetEmailAddress)
+                
+                Button("Send Rest Link", role: .destructive, action: sendResetLink)
+                Button("Cancel", role: .cancel) {
+                   resetEmailAddress = ""
+                }
+            }, message: {
+                Text("Enter the email address.")
             })
             .onChange(of: activeTab, initial: false) { oldValue, newValue in
                 password = ""
@@ -149,7 +164,26 @@ struct Login: View {
         })
         
     }
-    
+    func sendResetLink() {
+        Task {
+            do {
+                if resetEmailAddress.isEmpty {
+                    await presentAlert("Please enter a valid email address")
+                    return
+                }
+                
+                
+                isLoading = true
+                try await Auth.auth().sendPasswordReset(withEmail: resetEmailAddress)
+                await presentAlert("Please check your email inbox and follow the steps to reset your password.")
+                resetEmailAddress = ""
+                isLoading = false
+                
+            } catch {
+                await presentAlert(error.localizedDescription)
+            }
+        }
+    }
     
     //MARK: Action
     func loginAndSignUp() {
