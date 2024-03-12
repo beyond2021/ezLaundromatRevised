@@ -74,6 +74,7 @@ struct EZHome: View {
                             
                             // Product Card View...
                             ProductCardView(product: product)
+                                .frame(maxWidth: 200)
                         }
                     }
                     .padding(.horizontal,25)
@@ -86,22 +87,44 @@ struct EZHome: View {
                 // This button will show all products on the current product type..
                 // since here were showing only 4...
                 
-                Button {
-                    homeData.showMoreProductsOnType.toggle()
-                } label: {
-                    
-                    // Since we need image ar right...
-                    Label {
-                        Image(systemName: "arrow.right")
-                    } icon: {
-                        Text("see more")
+                HStack {
+                    Button {
+                        homeData.showAboutUs.toggle()
+                    } label: {
+                        
+                        // Since we need image ar right...
+                        Label {
+                            Image(systemName: "arrow.left")
+                        } icon: {
+                            Text("About us")
+                        }
+                        .font(.custom(customFont, size: 15).bold())
+                        .foregroundColor(Color.appBlue)
                     }
-                    .font(.custom(customFont, size: 15).bold())
-                    .foregroundColor(Color.appBlue)
-                }
-                .frame(maxWidth: .infinity,alignment: .trailing)
-                .padding(.trailing)
+                    .frame(maxWidth: .infinity,alignment: .leading)
+                    .padding(.leading)
+                    .padding(.top,10)
+                    
+                    Spacer()
+                    
+                    
+                    Button {
+                        homeData.showMoreProductsOnType.toggle()
+                    } label: {
+                        
+                        // Since we need image ar right...
+                        Label {
+                            Image(systemName: "arrow.right")
+                        } icon: {
+                            Text("see more")
+                        }
+                        .font(.custom(customFont, size: 15).bold())
+                        .foregroundColor(Color.appBlue)
+                    }
+                    .frame(maxWidth: .infinity,alignment: .trailing)
+                    .padding(.trailing)
                 .padding(.top,10)
+                }
 
             }
             .padding(.vertical)
@@ -118,6 +141,12 @@ struct EZHome: View {
             
         } content: {
             MoreProductsView()
+        }
+        
+        .sheet(isPresented: $homeData.showAboutUs) {
+            
+        } content: {
+            AboutUS()
         }
         // Displaying Search View....
         .overlay(
@@ -184,18 +213,22 @@ struct EZHome: View {
             .padding(.bottom,-80)
             
             Text(product.title)
-                .font(.custom(secondaryFont, size: 25))
+//                .font(.custom(secondaryFont, size: 25))
+                .font(.title2)
                 .fontWeight(.bold)
-                .foregroundStyle(.white)
+                .minimumScaleFactor(0.5)
+//                .foregroundStyle(.white)
               //  .padding(.top)
             
             Text(product.subtitle)
-                .font(.custom(secondaryFont, size: 18))
+//                .font(.custom(secondaryFont, size: 18))
+                .font(.caption)
                 .fontWeight(.semibold)
+                .minimumScaleFactor(0.5)
                 .foregroundColor(Color.appBlue)
             
-            Text(product.price)
-                .font(.custom(secondaryFont, size: 20))
+            Text("$\(product.price)")
+//                .font(.custom(secondaryFont, size: 20))
                 .fontWeight(.bold)
                 .foregroundColor(Color.white)
                 .padding(.top,5)
@@ -204,6 +237,7 @@ struct EZHome: View {
         .padding(.bottom,22)
         .background(
             LinearGradient(colors: [Color.white, Color.appBlue], startPoint: .top, endPoint: .bottom)
+//            Color.white
                 .cornerRadius(25)
         )
         // Showing Product detail when tapped...

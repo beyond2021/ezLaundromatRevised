@@ -19,6 +19,9 @@ struct EZProductDetailView: View {
     @EnvironmentObject var homeData: EZHomeViewModel
     //
     @State private var alert3: AlertConfig = .init(disableOutsideTap: false, slideEdge: .trailing)
+    //
+    @State private var showDescription: Bool = false
+    @State private var showCartAnimation: Bool = false
     
     var body: some View {
         
@@ -79,14 +82,15 @@ struct EZProductDetailView: View {
                 VStack( spacing: 5) {
                     
                     Text(product.title)
-                        .font(.custom(customFont, size: 30).bold())
+//                        .font(.custom(customFont, size: 30).bold())
+                        .font(.title)
                         .fontWeight(.bold)
-                        .foregroundStyle(.white)
+//                        .foregroundStyle(.white)
                     
                     Text(product.subtitle)
-                        .font(.custom(customFont, size: 20))
+                        .font(.title3)
                         .fontWeight(.bold)
-                        .foregroundColor(.gray)
+//                        .foregroundColor(.gray)
                     
                     Text("427 Anderson Avenue, Fairview NJ 07022")
                         .font(.custom(customFont, size: 12).bold())
@@ -112,7 +116,7 @@ struct EZProductDetailView: View {
                         .foregroundColor(.white)
                     
                     Button {
-                        
+                        showDescription = true
                     } label: {
                         
                         // Since we need image at right...
@@ -121,11 +125,14 @@ struct EZProductDetailView: View {
                         } icon: {
                             Text("Full description")
                         }
-                        .font(.custom(customFont, size: 15).bold())
-                        .foregroundColor(Color.white)
+//                        .font(.custom(customFont, size: 15).bold())
+                        .font(.callout.bold())
+                        .tint(.black)
+//                        .foregroundColor(Color.white)
+                        .padding(.top)
                     }
                    // Spacer()
-                    Spacer(minLength: 40)
+                    Spacer(minLength: 20)
 
                     HStack{
                         
@@ -134,7 +141,7 @@ struct EZProductDetailView: View {
                         
                         Spacer()
                         
-                        Text("\(product.price)")
+                        Text("$\(product.price)")
                             .font(.custom(customFont, size: 20).bold())
                             .foregroundStyle(Color.appBlue)
                     }
@@ -144,22 +151,18 @@ struct EZProductDetailView: View {
                     
                     // Add button...
                     Button {
-                        alert3.present()
+//                        alert3.present()
+                        showCartAnimation = true
                         addToCart()
                        // alert3.present()
                     } label: {
-                        Text("\(isAddedToCart() ? "Added" : "Add") to Cart")
-                            .font(.custom(customFont, size: 20).bold())
+//                        Text("\(isAddedToCart() ? "Added" : "Add") to Cart")
+                        Text("\(isAddedToCart() ? "Remove from" : "Add to") Cart")
+                            .font(.custom(secondaryFont, size: 20).bold())
                             .foregroundColor(.white)
                             //.padding(.vertical,20)
                             .frame(maxWidth: .infinity)
-//                            .background(
-//                                Color.appBlue
-//                                    .cornerRadius(15)
-//                                    .shadow(color: Color.black.opacity(0.06), radius: 5, x: 5, y: 5)
-//                            )
                     }
-//                    .buttonStyle(ColoredButtonStyle(color: Color.appBlue))
                     .buttonStyle(.borderedProminent)
 
                 }
@@ -169,9 +172,23 @@ struct EZProductDetailView: View {
                 .frame(maxWidth: .infinity,alignment: .leading)
             }
             .frame(maxWidth: .infinity,maxHeight: .infinity)
+            .fullScreenCover(isPresented: $showCartAnimation, content: {
+                CartAnimationView()
+//                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+//                          showCartAnimation = false
+//                    }
+//                DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+//                    
+//                }
+
+            })
+            .sheet(isPresented: $showDescription, content: {
+                DescriptionView(product)
+                    .presentationDetents([.height(350)])
+                    .presentationCornerRadius(25)
+            })
             .background(
-//                Color.white
-                LinearGradient(colors: [Color.appBlue, .white], startPoint: .top, endPoint: .bottom)
+                LinearGradient(colors: [Color.white, .appBlue], startPoint: .top, endPoint: .bottom)
                 // Corner Radius for only top side....
                     .clipShape(CustomCorners(corners: [.topLeft,.topRight], radius: 25))
                     .ignoresSafeArea()
@@ -194,6 +211,21 @@ struct EZProductDetailView: View {
                     alert3.dismiss()
                 }
         }
+    }
+    @ViewBuilder
+    func DescriptionView(_ product: EZProduct) -> some View {
+        VStack( spacing: 6, content: {
+            Text(product.description)
+                .font(.custom(customFont, size: 20))
+                .fontWeight(.semibold)
+            Text("We have sent a verification email to your email address.\nPlease verify to continue.")
+                .multilineTextAlignment(.center)
+                .font(.custom(customFont, size: 14))
+                .fontWeight(.semibold)
+                .foregroundStyle(.gray)
+                .padding(.horizontal, 25)
+        })
+
     }
     
     func isLiked()->Bool{

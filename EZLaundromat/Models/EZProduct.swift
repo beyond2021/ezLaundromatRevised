@@ -25,7 +25,22 @@ enum EZProductType: String, CaseIterable {
     case washNFold = "Wash N fold"
     case mens = "Dry Clean Services"
     case womens = "Womens"
-    case kids = "Kids Services"
+//    case kids = "Kids Services"
+    //
+//    case shirts = "Shirts"
+//    case tops = "Tops"
+//    case bottoms = "Bottoms"
+//    case dresses = "Dresses"
+//    case homeItems = "Home Items"
+//    case outerWear = "Outer Wear"
+//    case accessoriesAndHomeWear = "Accessories and Homewaer"
+//    case bedSheets = "Bed Sheets"
+//    case duvetCovers = "Duvet Covers"
+//    case pillowCaseAndCushionCovers = "Pillow case and cushion covers"
+//    case bathroomItems = "Bathroom Items"
+//    case dining = "Dining"
+//    case miscellaneous = "Miscellaneous"
+    
 }
 enum DeliveryType: String, CaseIterable {
     case pickUp = "Pick Up"

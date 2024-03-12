@@ -187,11 +187,14 @@ struct EZCardView: View{
             VStack(alignment: .leading, spacing: 8) {
                 
                 Text(product.title)
-                    .font(.custom(customFont, size: 18).bold())
+//                    .font(.custom(customFont, size: 18).bold())
+                    .font(.title2.bold())
+                    .minimumScaleFactor(0.5)
                     .lineLimit(1)
                 
                 Text(product.price)
-                    .font(.custom(customFont, size: 17))
+//                    .font(.custom(customFont, size: 17))
+                    .font(.caption.bold())
                     .fontWeight(.semibold)
                     .foregroundColor(Color.appBlue)
                 

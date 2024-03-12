@@ -31,7 +31,9 @@ class EZHomeViewModel: ObservableObject {
         EZProduct( type: .washNFold, title: "Dirty Laundry?", subtitle: "Stains, meet you match.", description: "Billed By ThePound.", price: "50", productImage: "EZLaundryBasket"),
         EZProduct( type: .washNFold, title: "Bulk Laundry", subtitle: "Laundry made easy.", description: "Wash", price: "10", productImage: "EZWashingMaching001"),
         EZProduct( type: .washNFold, title: "Blankets", subtitle: "Your laundry, our passion.", description: "Wash", price: "14", productImage: "EZBlanket001"),
-//        EZProduct( type: .mens, title: "T Shirts", subtitle: "Mens T Shirst", description: "Dry Clean", price: "5", productImage: "MensTShirts"),
+        
+        
+//        EZProduct( type: .shirts, title: "SHIRT ON HANGER", subtitle: "Mens T Shirst", description: "Dry Clean", price: "5", productImage: "EZMensShirt001"),
 //        EZProduct( type: .womens, title: "Suits", subtitle: "Womens Suit", description: "Dry Clean", price: "14", productImage: "EZMensSuit"),
 //        EZProduct( type: .womens, title: "Dresses", subtitle: "Women's Dresses", description: "Dry Clean", price: "10", productImage: "dress"),
 //        EZProduct( type: .womens, title: "Pants", subtitle: "Womens Pants", description: "Dry Clean", price: "14", productImage: "WPants"),
@@ -46,6 +48,9 @@ class EZHomeViewModel: ObservableObject {
     
     // More products on the type..
     @Published var showMoreProductsOnType: Bool = false
+    
+    // About US
+    @Published var showAboutUs: Bool = false
     
     // Search Data...
     @Published var searchText: String = ""

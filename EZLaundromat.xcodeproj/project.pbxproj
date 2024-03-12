@@ -40,6 +40,8 @@
 		220322D92B9E54CB004F6BCF /* Helvetica Black Condensed Oblique.otf in Resources */ = {isa = PBXBuildFile; fileRef = 220322D82B9E54CB004F6BCF /* Helvetica Black Condensed Oblique.otf */; };
 		220322DB2B9E54F3004F6BCF /* Helvetica CE Narrow.otf in Resources */ = {isa = PBXBuildFile; fileRef = 220322DA2B9E54F3004F6BCF /* Helvetica CE Narrow.otf */; };
 		220322DD2B9E55A7004F6BCF /* Helvetica Bold Condensed Oblique.otf in Resources */ = {isa = PBXBuildFile; fileRef = 220322DC2B9E55A7004F6BCF /* Helvetica Bold Condensed Oblique.otf */; };
+		220322E12B9FDEFC004F6BCF /* CartAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220322E02B9FDEFC004F6BCF /* CartAnimationView.swift */; };
+		220322E52BA016F3004F6BCF /* AboutUS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220322E42BA016F3004F6BCF /* AboutUS.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -75,6 +77,8 @@
 		220322D82B9E54CB004F6BCF /* Helvetica Black Condensed Oblique.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Helvetica Black Condensed Oblique.otf"; sourceTree = "<group>"; };
 		220322DA2B9E54F3004F6BCF /* Helvetica CE Narrow.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Helvetica CE Narrow.otf"; sourceTree = "<group>"; };
 		220322DC2B9E55A7004F6BCF /* Helvetica Bold Condensed Oblique.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Helvetica Bold Condensed Oblique.otf"; sourceTree = "<group>"; };
+		220322E02B9FDEFC004F6BCF /* CartAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartAnimationView.swift; sourceTree = "<group>"; };
+		220322E42BA016F3004F6BCF /* AboutUS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUS.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,6 +177,8 @@
 				220322902B9C960D004F6BCF /* CustomCorners.swift */,
 				220322872B9C9554004F6BCF /* StaggeredGrid.swift */,
 				220322B92B9C9FE0004F6BCF /* View+extensions.swift */,
+				220322E02B9FDEFC004F6BCF /* CartAnimationView.swift */,
+				220322E42BA016F3004F6BCF /* AboutUS.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -312,11 +318,13 @@
 				220322912B9C960D004F6BCF /* CustomCorners.swift in Sources */,
 				220322782B9C8F7B004F6BCF /* ContentView.swift in Sources */,
 				220322BA2B9C9FE0004F6BCF /* View+extensions.swift in Sources */,
+				220322E52BA016F3004F6BCF /* AboutUS.swift in Sources */,
 				220322B02B9C9CFB004F6BCF /* EZMainPage.swift in Sources */,
 				220322A12B9C9A00004F6BCF /* EZSharedDataModel.swift in Sources */,
 				220322A82B9C9BAB004F6BCF /* EZProduct.swift in Sources */,
 				220322882B9C9554004F6BCF /* StaggeredGrid.swift in Sources */,
 				220322BC2B9CA052004F6BCF /* EZSearchView.swift in Sources */,
+				220322E12B9FDEFC004F6BCF /* CartAnimationView.swift in Sources */,
 				220322762B9C8F7B004F6BCF /* EZLaundromatApp.swift in Sources */,
 				220322A62B9C9B90004F6BCF /* UniversalAlert.swift in Sources */,
 				220322AC2B9C9CE7004F6BCF /* EZCartPage.swift in Sources */,

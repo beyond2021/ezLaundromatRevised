@@ -23,7 +23,6 @@ struct Login: View {
     // Forgot Password Properties
     @State private var showResetAlert: Bool = false
     @State private var resetEmailAddress: String = ""
-    
     // Userdefaults
     @AppStorage("log_status") private var logStatus: Bool = false
     var body: some View {
@@ -103,7 +102,7 @@ struct Login: View {
                 
                 Button("Send Rest Link", role: .destructive, action: sendResetLink)
                 Button("Cancel", role: .cancel) {
-                   resetEmailAddress = ""
+                    resetEmailAddress = ""
                 }
             }, message: {
                 Text("Enter the email address.")
@@ -141,12 +140,12 @@ struct Login: View {
                 // YOU CAN DELETE THE UNVERIFIEND EMAIL FROM FIREBASE HERE
                 showEmailVerificationView = false
                 isLoading = false
-                    
-//                if let user = Auth.auth().currentUser {
-//                    user.delete { _ in
-//                        
-//                    }
-//                }
+                
+                //                if let user = Auth.auth().currentUser {
+                //                    user.delete { _ in
+                //
+                //                    }
+                //                }
             }
             .padding(15)
         })
@@ -171,14 +170,11 @@ struct Login: View {
                     await presentAlert("Please enter a valid email address")
                     return
                 }
-                
-                
                 isLoading = true
                 try await Auth.auth().sendPasswordReset(withEmail: resetEmailAddress)
                 await presentAlert("Please check your email inbox and follow the steps to reset your password.")
                 resetEmailAddress = ""
                 isLoading = false
-                
             } catch {
                 await presentAlert(error.localizedDescription)
             }
@@ -234,7 +230,6 @@ struct Login: View {
             isLoading = false
         }
     }
-    
     //MARK: Tab Type SWITCHING
     enum Tab: String, CaseIterable {
         case login = "Login"
@@ -267,7 +262,6 @@ fileprivate extension View {
                     ProgressView()
                 }
             }
-        
     }
     @ViewBuilder
     func customTextField(_ icon: String? = nil, _ paddingTop: CGFloat = 0,  _ paddingBottom: CGFloat = 0) -> some View {
@@ -287,8 +281,6 @@ fileprivate extension View {
         .padding(.bottom, paddingBottom)
         .listRowInsets(.init(top: 10, leading: 0, bottom: 0, trailing: 0))
         .listRowSeparator(.hidden)
-        
-        
     }
 }
 
