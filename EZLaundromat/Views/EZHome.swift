@@ -116,7 +116,7 @@ struct EZHome: View {
                         Label {
                             Image(systemName: "arrow.right")
                         } icon: {
-                            Text("see more")
+                            Text("Hours and Prices")
                         }
                         .font(.custom(customFont, size: 15).bold())
                         .foregroundColor(Color.appBlue)
@@ -140,7 +140,8 @@ struct EZHome: View {
         .sheet(isPresented: $homeData.showMoreProductsOnType) {
             
         } content: {
-            MoreProductsView()
+//            MoreProductsView()
+            PriceList()
         }
         
         .sheet(isPresented: $homeData.showAboutUs) {

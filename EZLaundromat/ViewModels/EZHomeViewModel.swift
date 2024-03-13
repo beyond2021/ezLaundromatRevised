@@ -28,7 +28,7 @@ class EZHomeViewModel: ObservableObject {
         
         EZProduct( type: .womens, title: "Suits", subtitle: "Womens Suits", description: "Dry Clean", price: "14", productImage: "EZWomensSuit001"),
         
-        EZProduct( type: .washNFold, title: "Dirty Laundry?", subtitle: "Stains, meet you match.", description: "Billed By ThePound.", price: "50", productImage: "EZLaundryBasket"),
+        EZProduct( type: .washNFold, title: "Dirty Laundry?", subtitle: "Stains, meet you match.", description: "You can do your own laundry in our newly renovated Laundromat at 427 Anderson Avenue, Fairview NJ 07022. It’s in our store and is open during our normal business hours.", price: "50", productImage: "EZLaundryBasket"),
         EZProduct( type: .washNFold, title: "Bulk Laundry", subtitle: "Laundry made easy.", description: "Wash", price: "10", productImage: "EZWashingMaching001"),
         EZProduct( type: .washNFold, title: "Blankets", subtitle: "Your laundry, our passion.", description: "Wash", price: "14", productImage: "EZBlanket001"),
         

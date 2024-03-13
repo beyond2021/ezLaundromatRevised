@@ -94,26 +94,26 @@ struct EZProductDetailView: View {
                     
                     Text("427 Anderson Avenue, Fairview NJ 07022")
                         .font(.custom(customFont, size: 12).bold())
-                        .foregroundStyle(.white)
+                        .foregroundStyle(.black)
                     
                     Text("+1 (201) 366-4766")
                         .font(.custom(customFont, size: 16).bold())
-                        .foregroundStyle(.white)
+                        .foregroundStyle(.black)
                        // .padding(.top)
                     
                     Text("tmitchell@ezlaundromat.net")
                         .font(.custom(customFont, size: 16).bold())
                         .accentColor(.red)
-                        .foregroundStyle(.white)
+                        .foregroundStyle(.black)
                        // .padding(.top)
                     Text(.init("[Website](https://ezlaundromat.net//)"))
-                        .accentColor(.red)
+                        .accentColor(.black)
                     
                     
-                    Text(product.description)
-                        .font(.custom(customFont, size: 15))
-                        .fontWeight(.bold)
-                        .foregroundColor(.white)
+//                    Text(product.description)
+//                        .font(.custom(customFont, size: 15))
+//                        .fontWeight(.bold)
+//                        .foregroundColor(.white)
                     
                     Button {
                         showDescription = true
@@ -157,13 +157,15 @@ struct EZProductDetailView: View {
                        // alert3.present()
                     } label: {
 //                        Text("\(isAddedToCart() ? "Added" : "Add") to Cart")
-                        Text("\(isAddedToCart() ? "Remove from" : "Add to") Cart")
-                            .font(.custom(secondaryFont, size: 20).bold())
+                        Text("\(isAddedToCart() ? "Added" : "Add ") to Cart")
+//                            .font(.custom(secondaryFont, size: 20).bold())
+                            .font(.title3.bold())
                             .foregroundColor(.white)
                             //.padding(.vertical,20)
                             .frame(maxWidth: .infinity)
                     }
                     .buttonStyle(.borderedProminent)
+                    .disabled(isAddedToCart())
 
                 }
                 
@@ -214,16 +216,18 @@ struct EZProductDetailView: View {
     }
     @ViewBuilder
     func DescriptionView(_ product: EZProduct) -> some View {
+        
         VStack( spacing: 6, content: {
             Text(product.description)
-                .font(.custom(customFont, size: 20))
-                .fontWeight(.semibold)
-            Text("We have sent a verification email to your email address.\nPlease verify to continue.")
+                .font(.callout)
                 .multilineTextAlignment(.center)
-                .font(.custom(customFont, size: 14))
-                .fontWeight(.semibold)
-                .foregroundStyle(.gray)
-                .padding(.horizontal, 25)
+                .frame(width: 300)
+//            Text("We have sent a verification email to your email address.\nPlease verify to continue.")
+//                .multilineTextAlignment(.center)
+//                .font(.custom(customFont, size: 14))
+//                .fontWeight(.semibold)
+//                .foregroundStyle(.gray)
+//                .padding(.horizontal, 25)
         })
 
     }
