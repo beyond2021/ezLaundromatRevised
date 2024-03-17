@@ -8,9 +8,10 @@
 import SwiftUI
 
 struct PriceList: View {
+    @Environment(\.presentationMode) var mode
     var body: some View {
         ScrollView {
-            VStack(spacing: 5) {
+            VStack( spacing: 5) {
                 Group {
                     Button(action: {}, label: {
                         Text("Request A Pickup")
@@ -19,11 +20,14 @@ struct PriceList: View {
                     .buttonStyle(.borderless)
                     .padding(.top)
                     
-                    Text("Laundromat Hours")
-                        .font(.title.bold())
-                        .padding(.bottom)
-                        .foregroundStyle(.red)
+                    Text("LAUNDRY HOURS")
+                        .padding()
+                        .foregroundColor(.white)
+                        .background(Color.red)
+                        .cornerRadius(6.0)
+                        //
                 }
+                .padding(.bottom)
                 
                 
                 Group {
@@ -34,21 +38,25 @@ struct PriceList: View {
                     Text("Friday: 9am – 7pm")
                     Text("Saturday: 10am – 6pm")
                 }
+                .font(.callout.bold())
+//                .padding(.bottom)
                 
                 Group {
-                    Text("Coin Laundry Pricing")
-                        .font(.title.bold())
-                        .padding(.top)
-                        .padding(.bottom)
-                        .foregroundStyle(.red)
+                    Text("COIN LAUNDRY PRICES")
+                        .padding()
+                        .foregroundColor(.white)
+                        .background(Color.red)
+                        .cornerRadius(6.0)
+
                     
                 }
-                Group {
+                .padding(.top)
+               
                     Text("• Large 2 Load Washer: $6.50")
                     Text("• Extra-Large 4 Load Washer: $10.25")
                     Text("• Dryers: 25 cents per 2 minutes")
                     
-                }
+               
                 Group {
                     Button(action: {}, label: {
                         Text("Schedule A Pickup")
@@ -59,6 +67,12 @@ struct PriceList: View {
                 }
                 
             }
+            .overlay(alignment: .topTrailing, content: {
+                Button("Close") {
+                    self.mode.wrappedValue.dismiss()
+                }
+                .padding(15)
+            })
                 
             }
         }

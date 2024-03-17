@@ -22,6 +22,10 @@ struct EZProductDetailView: View {
     //
     @State private var showDescription: Bool = false
     @State private var showCartAnimation: Bool = false
+    //Environment Variables
+    @Environment(\.presentationMode) var mode
+    //
+    @State private var isInTheCart: Bool = false
     
     var body: some View {
         
@@ -124,10 +128,11 @@ struct EZProductDetailView: View {
                             Image(systemName: "arrow.right")
                         } icon: {
                             Text("Full description")
+                                .font(.title2.bold())
                         }
 //                        .font(.custom(customFont, size: 15).bold())
                         .font(.callout.bold())
-                        .tint(.black)
+                        .tint(.white)
 //                        .foregroundColor(Color.white)
                         .padding(.top)
                     }
@@ -176,18 +181,13 @@ struct EZProductDetailView: View {
             .frame(maxWidth: .infinity,maxHeight: .infinity)
             .fullScreenCover(isPresented: $showCartAnimation, content: {
                 CartAnimationView()
-//                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-//                          showCartAnimation = false
-//                    }
-//                DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-//                    
-//                }
 
             })
             .sheet(isPresented: $showDescription, content: {
                 DescriptionView(product)
-                    .presentationDetents([.height(350)])
+//                    .presentationDetents([.height(350)])
                     .presentationCornerRadius(25)
+                    .interactiveDismissDisabled()
             })
             .background(
                 LinearGradient(colors: [Color.white, .appBlue], startPoint: .top, endPoint: .bottom)
@@ -213,23 +213,60 @@ struct EZProductDetailView: View {
                     alert3.dismiss()
                 }
         }
+        .onChange(of: isInTheCart, initial: false, { oldValue, newValue in
+            if isInTheCart {
+                self.mode.wrappedValue.dismiss()
+            }
+        })
     }
     @ViewBuilder
     func DescriptionView(_ product: EZProduct) -> some View {
-        
-        VStack( spacing: 6, content: {
-            Text(product.description)
-                .font(.callout)
-                .multilineTextAlignment(.center)
-                .frame(width: 300)
-//            Text("We have sent a verification email to your email address.\nPlease verify to continue.")
-//                .multilineTextAlignment(.center)
-//                .font(.custom(customFont, size: 14))
-//                .fontWeight(.semibold)
-//                .foregroundStyle(.gray)
-//                .padding(.horizontal, 25)
+        let headLines: [String] = ["Cleanliness is Key","Where clean meets convenience.", "Clean clothes, happy you!", "Bringing freshness to every thread.","We clean, you relax."].shuffled()
+        ScrollView (showsIndicators: false){
+            
+            VStack( spacing: 10, content: {
+                
+                Image(product.productImage)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 200, height: 200)
+                
+                Text(headLines.first!.capitalized)
+                    .minimumScaleFactor(0.5)
+                    .font(.title.bold())
+                    .padding()
+                    .foregroundStyle(Color.appBlue)
+                    .background(Color.clear)
+                    .cornerRadius(12.0)
+//                    .padding(.top)
+                   
+                
+                    
+                Text(product.description)
+//                    .font(.callout.bold())
+                    .font(.custom(customFont, size: 20))
+                    .multilineTextAlignment(.leading)
+                    .frame(width: 300)
+//                    .padding(.top)
+                Button(action: {}, label: {
+                    Text("Schedule A Pickup")
+                        .padding()
+                })
+                .buttonStyle(.borderless)
+                .padding(.top)
+                
+                    
+                
+            })
+            
+        }
+        .overlay(alignment: .topTrailing, content: {
+            Button("Close") {
+               showDescription = false
+            }
+            .padding(15)
         })
-
+       // .padding(.bottom, -70)
     }
     
     func isLiked()->Bool{
@@ -271,6 +308,7 @@ struct EZProductDetailView: View {
         else{
             // add to liked
             sharedData.cartProducts.append(product)
+            isInTheCart = true
         }
     }
     @ViewBuilder
@@ -302,6 +340,31 @@ struct ColoredButtonStyle: ButtonStyle {
                     .opacity(configuration.isPressed ? 0.3 : 0)
                     .clipShape(RoundedRectangle(cornerRadius: 10))
             )
+    }
+}
+struct PaddedButtonStyle: ButtonStyle {
+    let foregroundColor: Color
+    let backgroundColor: Color
+    let cornerRadius: Double
+
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .padding()
+            .foregroundColor(foregroundColor)
+            .background(backgroundColor)
+            .cornerRadius(cornerRadius)
+    }
+}
+
+extension View {
+    func paddedButtonStyle(foregroundColor: Color = .white,
+                           backgroundColor: Color = Color.blue,
+                           cornerRadius: Double = 6
+    ) -> some View {
+        self.buttonStyle(PaddedButtonStyle(foregroundColor: foregroundColor,
+                                           backgroundColor: backgroundColor,
+                                           cornerRadius: cornerRadius)
+        )
     }
 }
 

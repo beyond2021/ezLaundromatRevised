@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct CartAnimationView: View {
-    var itemsToAddToCart = ["EZMensCoat001", "EZMensSuit2"]
+    var itemsToAddToCart = ["EZMensCoat001", "EZMensSuit2"].shuffled()
     @State var offSetY = -130.0
     @Environment(\.presentationMode) var mode
-    @State var remaining = 4.0
+    @State var remaining = 3.0
     var body: some View {
         ZStack {
             Color.appBlue.ignoresSafeArea(.all)
@@ -27,9 +27,12 @@ struct CartAnimationView: View {
                         .opacity(offSetY == -180 ? 0 : 1.0)
                         .animation(Animation.linear(duration: 0.75).delay(TimeInterval(index)),value: offSetY)
                 }
-                Image("Cart")
+                Image(systemName: "cart")
                     .resizable()
+                    .tint(.white)
                     .frame(width: 100, height: 100)
+                    .tint(.white)
+                    
             }
         }
         // Animate the images

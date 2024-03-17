@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct AboutUS: View {
+    @Environment(\.presentationMode) var mode
     var body: some View {
         ScrollView(showsIndicators: false) {
             VStack(spacing: 5) {
@@ -116,6 +117,12 @@ struct AboutUS: View {
                 }
                 
             }
+            .overlay(alignment: .topTrailing, content: {
+                Button("Close") {
+                    self.mode.wrappedValue.dismiss()
+                }
+                .padding(15)
+            })
         }
     }
 }

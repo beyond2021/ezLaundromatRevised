@@ -12,16 +12,16 @@ import SwiftUI
 struct ContentView: View {
     // Userdefaults
     @AppStorage("log_status") private var logStatus: Bool = false
+    @State private var activeIntro: PageIntro = pageIntros[0]
     var body: some View {
-//      Login()
-    //EZMainPage()
         Group{
             if logStatus{
                 //MainPage()
                 EZMainPage()
             }
             else{
-                Login()
+               Login()
+                
             }
         }
     }

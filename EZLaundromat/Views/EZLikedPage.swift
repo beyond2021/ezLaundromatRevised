@@ -14,6 +14,7 @@ struct EZLikedPage: View {
     @State var showDeleteOption: Bool = false
     
     var body: some View {
+        //        SwipeAction(cornerRadius: 10, direction: .trailing) {
         
         NavigationView{
             
@@ -40,7 +41,7 @@ struct EZLikedPage: View {
                                 .frame(width: 25, height: 25)
                         }
                         .opacity(sharedData.likedProducts.isEmpty ? 0 : 1)
-
+                        
                     }
                     
                     // checking if liked products are empty...
@@ -66,7 +67,7 @@ struct EZLikedPage: View {
                         }
                     }
                     else{
-                     
+                        //                        SwipeAction(cornerRadius: 10, direction: .trailing) {
                         // Displaying Products...
                         VStack(spacing: 15){
                             
@@ -85,12 +86,15 @@ struct EZLikedPage: View {
                                                 .foregroundColor(.red)
                                         }
                                         .padding(.trailing)
-
+                                        
                                     }
                                     
                                     CardView(product: product)
                                 }
+                                
                             }
+                            
+                            
                         }
                         .padding(.top,25)
                         .padding(.horizontal)
@@ -102,11 +106,16 @@ struct EZLikedPage: View {
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(
                 LinearGradient(colors: [Color.appBlue, Color.white], startPoint: .top, endPoint: .bottom)
-            
-//                Color("HomeBG")
+                
+                //                Color("HomeBG")
                     .ignoresSafeArea()
             )
+            
         }
+        
+
+ 
+
     }
     
     @ViewBuilder
