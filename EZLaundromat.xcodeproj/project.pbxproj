@@ -20,7 +20,6 @@
 		2203229D2B9C9926004F6BCF /* Raleway-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2203229C2B9C9926004F6BCF /* Raleway-Bold.ttf */; };
 		2203229F2B9C9938004F6BCF /* Raleway-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2203229E2B9C9938004F6BCF /* Raleway-ExtraBold.ttf */; };
 		220322A12B9C9A00004F6BCF /* EZSharedDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220322A02B9C9A00004F6BCF /* EZSharedDataModel.swift */; };
-		220322A62B9C9B90004F6BCF /* UniversalAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220322A52B9C9B90004F6BCF /* UniversalAlert.swift */; };
 		220322A82B9C9BAB004F6BCF /* EZProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220322A72B9C9BAB004F6BCF /* EZProduct.swift */; };
 		220322AA2B9C9CD0004F6BCF /* EZProductDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220322A92B9C9CD0004F6BCF /* EZProductDetailView.swift */; };
 		220322AC2B9C9CE7004F6BCF /* EZCartPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220322AB2B9C9CE7004F6BCF /* EZCartPage.swift */; };
@@ -63,7 +62,6 @@
 		2203229C2B9C9926004F6BCF /* Raleway-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Raleway-Bold.ttf"; path = "../../../../Downloads/Raleway/static/Raleway-Bold.ttf"; sourceTree = "<group>"; };
 		2203229E2B9C9938004F6BCF /* Raleway-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-ExtraBold.ttf"; sourceTree = "<group>"; };
 		220322A02B9C9A00004F6BCF /* EZSharedDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EZSharedDataModel.swift; sourceTree = "<group>"; };
-		220322A52B9C9B90004F6BCF /* UniversalAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UniversalAlert.swift; sourceTree = "<group>"; };
 		220322A72B9C9BAB004F6BCF /* EZProduct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EZProduct.swift; sourceTree = "<group>"; };
 		220322A92B9C9CD0004F6BCF /* EZProductDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EZProductDetailView.swift; sourceTree = "<group>"; };
 		220322AB2B9C9CE7004F6BCF /* EZCartPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EZCartPage.swift; sourceTree = "<group>"; };
@@ -87,6 +85,7 @@
 		220322E82BA5BFA9004F6BCF /* SwipeAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeAction.swift; sourceTree = "<group>"; };
 		220322EB2BA675B4004F6BCF /* PageIntro.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageIntro.swift; sourceTree = "<group>"; };
 		220322EF2BA67909004F6BCF /* CustomIndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomIndicatorView.swift; sourceTree = "<group>"; };
+		2255BAF92BA7AD7D004A4FD1 /* EZLaundromat.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = EZLaundromat.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,9 +123,9 @@
 		220322742B9C8F7B004F6BCF /* EZLaundromat */ = {
 			isa = PBXGroup;
 			children = (
+				2255BAF92BA7AD7D004A4FD1 /* EZLaundromat.entitlements */,
 				220322A42B9C9B81004F6BCF /* Alerts */,
 				220322942B9C9636004F6BCF /* Fonts */,
-				2203228B2B9C9574004F6BCF /* Login */,
 				220322862B9C9529004F6BCF /* Helpers */,
 				220322852B9C9513004F6BCF /* ViewModels */,
 				220322842B9C94FF004F6BCF /* Views */,
@@ -160,6 +159,7 @@
 		220322842B9C94FF004F6BCF /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				2203228B2B9C9574004F6BCF /* Login */,
 				220322EE2BA678EC004F6BCF /* OnBoarding */,
 				220322BB2B9CA052004F6BCF /* EZSearchView.swift */,
 				220322B32B9C9D19004F6BCF /* EZLikedPage.swift */,
@@ -222,7 +222,6 @@
 		220322A42B9C9B81004F6BCF /* Alerts */ = {
 			isa = PBXGroup;
 			children = (
-				220322A52B9C9B90004F6BCF /* UniversalAlert.swift */,
 			);
 			path = Alerts;
 			sourceTree = "<group>";
@@ -357,7 +356,6 @@
 				220322E12B9FDEFC004F6BCF /* CartAnimationView.swift in Sources */,
 				220322E72BA0317E004F6BCF /* PriceList.swift in Sources */,
 				220322762B9C8F7B004F6BCF /* EZLaundromatApp.swift in Sources */,
-				220322A62B9C9B90004F6BCF /* UniversalAlert.swift in Sources */,
 				220322AC2B9C9CE7004F6BCF /* EZCartPage.swift in Sources */,
 				220322D12B9CB113004F6BCF /* Login.swift in Sources */,
 				220322AA2B9C9CD0004F6BCF /* EZProductDetailView.swift in Sources */,
@@ -493,6 +491,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = EZLaundromat/EZLaundromat.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"EZLaundromat/Preview Content\"";
@@ -522,6 +521,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = EZLaundromat/EZLaundromat.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"EZLaundromat/Preview Content\"";

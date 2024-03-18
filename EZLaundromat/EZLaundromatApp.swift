@@ -10,7 +10,6 @@ import Firebase
 
 @main
 struct EZLaundromatApp: App {
-    @UIApplicationDelegateAdaptor(AppDelegate.self) private var delegate
     init() {
         FirebaseApp.configure()
     }

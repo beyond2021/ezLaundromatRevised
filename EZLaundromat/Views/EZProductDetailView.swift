@@ -18,8 +18,6 @@ struct EZProductDetailView: View {
     
     @EnvironmentObject var homeData: EZHomeViewModel
     //
-    @State private var alert3: AlertConfig = .init(disableOutsideTap: false, slideEdge: .trailing)
-    //
     @State private var showDescription: Bool = false
     @State private var showCartAnimation: Bool = false
     //Environment Variables
@@ -185,7 +183,6 @@ struct EZProductDetailView: View {
             })
             .sheet(isPresented: $showDescription, content: {
                 DescriptionView(product)
-//                    .presentationDetents([.height(350)])
                     .presentationCornerRadius(25)
                     .interactiveDismissDisabled()
             })
@@ -198,21 +195,6 @@ struct EZProductDetailView: View {
             .zIndex(0)
         }
         .background(Color("HomeBG").ignoresSafeArea())
-        .alert(alertConfig: $alert3) {
-            RoundedRectangle(cornerRadius: 15)
-                .fill(LinearGradient(colors: [Color.appBlue, .white], startPoint: .topLeading, endPoint: .bottomTrailing))
-                .frame(width: 150, height: 150)
-                .overlay(content: {
-                    Text("\(product.title) service is now in your Cart.")
-                        .fontWeight(.bold)
-                        .foregroundStyle(.white)
-                        .padding(8)
-                        .multilineTextAlignment(.center)
-                })
-                .onTapGesture {
-                    alert3.dismiss()
-                }
-        }
         .onChange(of: isInTheCart, initial: false, { oldValue, newValue in
             if isInTheCart {
                 self.mode.wrappedValue.dismiss()
@@ -238,25 +220,16 @@ struct EZProductDetailView: View {
                     .foregroundStyle(Color.appBlue)
                     .background(Color.clear)
                     .cornerRadius(12.0)
-//                    .padding(.top)
-                   
-                
-                    
                 Text(product.description)
-//                    .font(.callout.bold())
                     .font(.custom(customFont, size: 20))
                     .multilineTextAlignment(.leading)
                     .frame(width: 300)
-//                    .padding(.top)
                 Button(action: {}, label: {
                     Text("Schedule A Pickup")
                         .padding()
                 })
                 .buttonStyle(.borderless)
                 .padding(.top)
-                
-                    
-                
             })
             
         }
@@ -266,7 +239,6 @@ struct EZProductDetailView: View {
             }
             .padding(15)
         })
-       // .padding(.bottom, -70)
     }
     
     func isLiked()->Bool{
