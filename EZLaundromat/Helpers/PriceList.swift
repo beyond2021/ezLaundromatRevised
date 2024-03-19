@@ -15,10 +15,18 @@ struct PriceList: View {
                 Group {
                     Button(action: {}, label: {
                         Text("Request A Pickup")
-                            .padding()
+                            .foregroundStyle(Color.primary)
+                            .frame(height: 40)
+                            .frame(maxWidth: .infinity)
+                            .contentShape(.capsule)
+                            .background {
+                                Capsule()
+                                    .stroke(Color.primary, lineWidth: 0.5)
+                            }
                     })
-                    .buttonStyle(.borderless)
-                    .padding(.top)
+                    .frame(maxWidth: .infinity)
+                    .padding(20)
+                    .padding(.top, 40)
                     
                     Text("LAUNDRY HOURS")
                         .padding()
@@ -60,10 +68,17 @@ struct PriceList: View {
                 Group {
                     Button(action: {}, label: {
                         Text("Schedule A Pickup")
-                            .padding()
+                            .foregroundStyle(Color.primary)
+                            .frame(height: 40)
+                            .frame(maxWidth: .infinity)
+                            .contentShape(.capsule)
+                            .background {
+                                Capsule()
+                                    .stroke(Color.primary, lineWidth: 0.5)
+                            }
                     })
-                    .buttonStyle(.borderless)
-                    .padding(.top)
+                    .frame(maxWidth: .infinity)
+                    .padding(20)
                 }
                 
             }
@@ -73,8 +88,11 @@ struct PriceList: View {
                 }
                 .padding(15)
             })
+            
+            
                 
             }
+        
         }
   }
    

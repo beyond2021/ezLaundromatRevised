@@ -226,10 +226,17 @@ struct EZProductDetailView: View {
                     .frame(width: 300)
                 Button(action: {}, label: {
                     Text("Schedule A Pickup")
-                        .padding()
+                        .foregroundStyle(Color.primary)
+                        .frame(height: 40)
+                        .frame(maxWidth: .infinity)
+                        .contentShape(.capsule)
+                        .background {
+                            Capsule()
+                                .stroke(Color.primary, lineWidth: 0.5)
+                        }
                 })
-                .buttonStyle(.borderless)
-                .padding(.top)
+                .frame(maxWidth: .infinity)
+                .padding(20)
             })
             
         }
