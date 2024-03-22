@@ -35,108 +35,160 @@ struct Login: View {
     @State private var appleIsLoading: Bool = false
     @State private var nonce: String?
     @Environment(\.colorScheme) private var scheme
+    //
+    @State private var selectedImage: UIImage?
+    @State private var image: Image?
+    //pre iOS16
+    @State var imagePickerPresented = false
+    @Environment(\.presentationMode) var mode
+    @State private var showImage: Bool = false
     var body: some View {
-                ZStack {
-                    NavigationStack {
-                        List {
-                            Section {
-                                TextField("Email Address", text: $emailAddress)
-                                    .keyboardType(.emailAddress)
-                                    .customTextField("person")
-                                
-                                SecureField("Password", text: $password)
-                                    .customTextField("person", 0, activeTab == .login ? 10 : 0)
-                                if activeTab == .signUp {
-                                    SecureField("Re-Enter Password", text: $reEnterPassword)
-                                        .customTextField("person", 0, activeTab != .login ? 10 : 0)
-                                    
-                                }
-                                
-                            } header: {
-                                Picker("", selection:  $activeTab) {
-                                    ForEach(Tab.allCases, id:\.rawValue) {
-                                        Text($0.rawValue)
-                                            .tag($0)
-                                    }
-                                }
-                                .pickerStyle(.segmented)
-                                .listRowInsets(.init(top: 15, leading: 0, bottom: 10, trailing: 0))
-                                .listRowSeparator(.hidden)
-                            } footer: {
-                                VStack(alignment: .trailing, spacing: 12, content: {
-                                    if activeTab == .login {
-                                        Button("Forgot Password?") {
-                                            showResetAlert = true
-                                            
-                                        }
-                                        .font(.caption)
-                                        .tint(Color.accentColor)
-                                    }
-                                    Button(action: loginAndSignUp, label: {
-                                        HStack(spacing: 12, content: {
-                                            Text(activeTab == .login ? "Login" : "Create Account")
-                                            Image(systemName: "arrow.right")
-                                                .font(.callout)
-                                        })
-                                        .padding(.horizontal, 10)
-                                    })
-                                    .buttonStyle(.borderedProminent)
-                                    .buttonBorderShape(.capsule)
-                                    .showLoadingIndicator(isLoading)
-                                    .disabled(buttonStatus)
-                                    
-                                })
-                                .frame(maxWidth: .infinity, alignment: .trailing)
-                                .listRowInsets(.init(top: 15, leading: 0, bottom: 0, trailing: 0))
-                                
+        ZStack {
+   //         if showImage {
+                NavigationStack {
+                    //
+                    if activeTab == .signUp {
+                    if let image = image {
+                        
+                        image
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: 140, height: 140)
+                            .clipShape(Circle())
+                            .foregroundColor(.white)
+                        
+                        
+                        
+                            .padding()
+                        
+                        
+                    } else {
+                        
+                        Button(action: {imagePickerPresented.toggle()}) {
+                            VStack {
+                                Image(systemName: "plus").font(.title).padding(.bottom, 4)
+                                Text("Photo").font(.headline)
                             }
-                            .disabled(isLoading) // Disable the view when isLoading is true
-                            VStack(alignment: .leading, content: {
-                                Text("Sign in with Apple Pay")
-                                    .font(.title.bold())
-                                SignInWithAppleButton(.signIn) { request in
-                                    let nonce = randomNonceString()
-                                    self.nonce = nonce
-                                    // Your Preferences
-                                    request.requestedScopes = [.email, .fullName]
-                                    request.nonce = sha256(nonce)
-                                    
-                                } onCompletion: { result in
-                                    switch result {
-                                    case .success(let authorization):
-                                        appleLoginWithFirebase(authorization)
-                                    case .failure(let error):
-                                        showAppleLoginError(error.localizedDescription
-                                        )
-                                    }
-                                    
-                                }
-//                                .signInWithAppleButtonStyle(scheme == .dark ? .white : .black)
-                                // Custom label for light and dark schemes
-                                .overlay{
-                                    ZStack {
-                                        Capsule()
-                                        HStack {
-                                            Image(systemName: "applelogo")
-                                            Text("Sign on with Apple")
-                                        }
-                                        .foregroundStyle(scheme == .dark ? .black: .white)
-                                    }
-                                    .allowsHitTesting(false)
-                                }
-                                .frame(height: 45)
-                                .clipShape(.capsule)
-                                .padding(.top, 10)
-
-                            })
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                            .padding(20)
                         }
-                        .animation(.snappy, value: activeTab)
-                        .listStyle(.insetGrouped)
-                        .navigationTitle("EZLaundromat")
-                        .font(.custom(customFont, size: 20))
+                        .padding(30)
+                        .foregroundColor(Color.appBlue)
+                        .overlay(
+                            Circle()
+                                .stroke(Color.appBlue, lineWidth: 2)
+                        )
+                        .sheet(isPresented: $imagePickerPresented, onDismiss: loadImage) {
+                            // ImagePicker(image: $selectedImage)
+                            TwitImagePicker(selectedImage: $selectedImage)
+                            
+                        }
+                        .padding()
                     }
+                }
+                //
+                List {
+                    Section {
+                        TextField("Email Address", text: $emailAddress)
+                            .keyboardType(.emailAddress)
+                            .customTextField("person")
+                        
+                        SecureField("Password", text: $password)
+                            .customTextField("person", 0, activeTab == .login ? 10 : 0)
+                        if activeTab == .signUp {
+                            SecureField("Re-Enter Password", text: $reEnterPassword)
+                                .customTextField("person", 0, activeTab != .login ? 10 : 0)
+                            
+                        }
+                        
+                    } header: {
+                        Picker("", selection:  $activeTab) {
+                            ForEach(Tab.allCases, id:\.rawValue) {
+                                Text($0.rawValue)
+                                    .tag($0)
+                            }
+                        }
+                        .pickerStyle(.segmented)
+                        .listRowInsets(.init(top: 15, leading: 0, bottom: 10, trailing: 0))
+                        .listRowSeparator(.hidden)
+                    } footer: {
+                        VStack(alignment: .trailing, spacing: 12, content: {
+                            
+                            if activeTab == .login {
+                                Button("Forgot Password?") {
+                                    showResetAlert = true
+                                    
+                                }
+                                .font(.caption)
+                                .tint(Color.accentColor)
+                            }
+                            Button(action: loginAndSignUp, label: {
+                                HStack(spacing: 12, content: {
+                                    Text(activeTab == .login ? "Login" : "Create Account")
+                                    Image(systemName: "arrow.right")
+                                        .font(.callout)
+                                })
+                                .padding(.horizontal, 10)
+                            })
+                            .buttonStyle(.borderedProminent)
+                            .buttonBorderShape(.capsule)
+                            .showLoadingIndicator(isLoading)
+                            .disabled(buttonStatus)
+                            
+                        })
+                        .frame(maxWidth: .infinity, alignment: .trailing)
+                        .listRowInsets(.init(top: 15, leading: 0, bottom: 0, trailing: 0))
+                        
+                    }
+                    .disabled(isLoading) // Disable the view when isLoading is true
+//                    Spacer()
+                    
+                    VStack(alignment: .leading, content: {
+                        Text("OR")
+                            .font(.title3.bold())
+                        SignInWithAppleButton(.signIn) { request in
+                            let nonce = randomNonceString()
+                            self.nonce = nonce
+                            // Your Preferences
+                            request.requestedScopes = [.email, .fullName]
+                            request.nonce = sha256(nonce)
+                            
+                        } onCompletion: { result in
+                            switch result {
+                            case .success(let authorization):
+                                appleLoginWithFirebase(authorization)
+                            case .failure(let error):
+                                showAppleLoginError(error.localizedDescription
+                                )
+                            }
+                            
+                        }
+//                        .padding(.bottom)
+                        //                                .signInWithAppleButtonStyle(scheme == .dark ? .white : .black)
+                        // Custom label for light and dark schemes
+                        .overlay{
+                            ZStack {
+                                Capsule()
+                                HStack {
+                                    Image(systemName: "applelogo")
+                                    Text("Sign on with Apple")
+                                }
+                                .foregroundStyle(scheme == .dark ? .black: .white)
+                            }
+                            .allowsHitTesting(false)
+                        }
+                        .frame(height: 45)
+                        .clipShape(.capsule)
+                        .padding(.top, 10)
+                        
+                    })
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(5)
+                }
+                .animation(.snappy, value: activeTab)
+                .listStyle(.insetGrouped)
+                .navigationTitle("EZLaundromat")
+                .font(.custom(customFont, size: 20))
+            }
+       
                     .sheet(isPresented: $showEmailVerificationView, content: {
                         EmailVerificationView()
                             .presentationDetents([.height(350)])
@@ -172,6 +224,12 @@ struct Login: View {
                         password = ""
                         reEnterPassword = ""
                     }
+//                    .onChange(of: showImage, initial: false) { oldValue, newValue in
+//                        withAnimation {
+//                            showImage = true
+//                        }
+//                        
+//                    }
                 }
             }
     @ViewBuilder
@@ -443,4 +501,12 @@ fileprivate extension View {
 #Preview {
     ContentView()
 }
+extension Login {
+    func loadImage() {
+        guard let selectedImage = selectedImage else { return }
+        image = Image(uiImage: selectedImage)
+    }
+    
+}
+
 

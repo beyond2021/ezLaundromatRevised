@@ -94,13 +94,12 @@ struct EZHome: View {
                                     Text("ABOUT US")
                                         .font(.custom(customFont, size: 14))
                                 }
-                                .padding()
-                                .foregroundStyle(overText ? Color.white : Color.appBlue)
-                                .background(overText ? Color.appBlue: Color.clear)
-                                .cornerRadius(6.0)
-                                .onHover { over in
-                                    overText = over
-                                }
+//                                .padding()
+//                                .foregroundStyle(overText ? Color.white : Color.appBlue)
+//                                .background(overText ? Color.appBlue: Color.clear)
+//                                .cornerRadius(6.0)
+                                .modifier(EZButton())
+                                
  
                             }
                             .frame(maxWidth: .infinity,alignment: .leading)
@@ -121,13 +120,13 @@ struct EZHome: View {
                                     Text("PRICING")
                                         .font(.custom(customFont, size: 14))
                                 }
-                                .padding()
-                                .foregroundColor(.appBlue)
-                                .background(Color.clear)
-                                
-                                .cornerRadius(6.0)
-                                //                        .font(.custom(customFont, size: 15).bold())
-                                //                        .foregroundColor(Color.appBlue)
+                                .modifier(EZButton())
+//                                .padding()
+//                                .foregroundColor(.appBlue)
+//                                .background(Color.clear)
+//                                
+//                                .cornerRadius(6.0)
+                              
                             }
                             .frame(maxWidth: .infinity,alignment: .trailing)
                             .padding(.trailing)

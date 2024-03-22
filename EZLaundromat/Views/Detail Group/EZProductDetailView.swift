@@ -73,6 +73,7 @@ struct EZProductDetailView: View {
                     .padding(.horizontal)
                     .offset(y: -12)
                     .frame(maxHeight: .infinity)
+                    .shadow(color: Color.black.opacity(0.1), radius: 5, x: 5, y: 5)
             }
             .frame(height: getRect().height / 2.7)
             .zIndex(1)
@@ -161,13 +162,17 @@ struct EZProductDetailView: View {
                     } label: {
 //                        Text("\(isAddedToCart() ? "Added" : "Add") to Cart")
                         Text("\(isAddedToCart() ? "Added" : "Add ") to Cart")
+                            .modifier(WhiteEZButton())
+                            
 //                            .font(.custom(secondaryFont, size: 20).bold())
-                            .font(.title3.bold())
-                            .foregroundColor(.white)
-                            //.padding(.vertical,20)
-                            .frame(maxWidth: .infinity)
+//                            .font(.title3.bold())
+//                            .foregroundColor(.white)
+//                            //.padding(.vertical,20)
+//                            .frame(maxWidth: .infinity)
                     }
-                    .buttonStyle(.borderedProminent)
+                    .frame(maxWidth: .infinity)
+                    .padding(20)
+//                    .buttonStyle(.borderedProminent)
                     .disabled(isAddedToCart())
 
                 }
@@ -220,7 +225,7 @@ struct EZProductDetailView: View {
                     .foregroundStyle(Color.appBlue)
                     .background(Color.clear)
                     .cornerRadius(12.0)
-                Text(product.description)
+                Text(product.EZProductDescription)
                     .font(.custom(customFont, size: 20))
                     .multilineTextAlignment(.leading)
                     .frame(width: 300)

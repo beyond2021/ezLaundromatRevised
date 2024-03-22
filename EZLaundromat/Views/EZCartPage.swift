@@ -126,17 +126,20 @@ struct EZCartPage: View {
                         } label: {
                             
                             Text("Checkout")
-                                .font(.custom(customFont, size: 18).bold())
-                                .foregroundColor(.white)
-                                .padding(.vertical,18)
-                                .frame(maxWidth: .infinity)
-                                .background(Color.appBlue)
-                                .cornerRadius(15)
-                                .shadow(color: Color.black.opacity(0.05), radius: 5, x: 5, y: 5)
+                                .modifier(EZButton())
+//                                .font(.custom(customFont, size: 18).bold())
+//                                .foregroundColor(.white)
+//                                .padding(.vertical,18)
+//                                .frame(maxWidth: .infinity)
+//                                .background(Color.appBlue)
+//                                .cornerRadius(15)
+//                                .shadow(color: Color.black.opacity(0.05), radius: 5, x: 5, y: 5)
                         }
                         .padding(.vertical)
                     }
-                    .padding(.horizontal,25)
+//                    .padding(.horizontal,25)
+                    .frame(maxWidth: .infinity)
+                    .padding(20)
                 }
             }
             .navigationBarHidden(true)

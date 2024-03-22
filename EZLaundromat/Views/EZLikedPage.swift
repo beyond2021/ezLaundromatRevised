@@ -139,7 +139,7 @@ struct EZLikedPage: View {
                     .font(.custom(customFont, size: 17))
                     .fontWeight(.semibold)
                     .foregroundStyle(Color.appBlue)
-                Text("Type: \(product.type.rawValue)")
+                Text("Type: \(product.type)")
                     .font(.custom(customFont, size: 13))
                     .foregroundColor(.gray)
             }

@@ -95,7 +95,7 @@ struct AboutUS: View {
                         .multilineTextAlignment(.center)
                         .frame(width: 300)
                         .foregroundStyle(.red)
-                    Text("At [Your Laundromat's Name], we're proud to be an active member of the [Your Location] community. From sponsoring local events to participating in charitable initiatives, we're always looking for ways to give back and make a positive impact on the neighborhoods we serve.")
+                    Text("At EZLaundromat, we're proud to be an active member of the Fairview community. From sponsoring local events to participating in charitable initiatives, we're always looking for ways to give back and make a positive impact on the neighborhoods we serve.")
                         .font(.callout)
                         .multilineTextAlignment(.center)
                         .frame(width: 300)

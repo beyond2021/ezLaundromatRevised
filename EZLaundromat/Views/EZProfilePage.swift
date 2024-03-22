@@ -9,6 +9,12 @@ import SwiftUI
 import Firebase
 
 struct EZProfilePage: View {
+    @State private var selectedImage: UIImage?
+    @State private var image: Image?
+    //pre iOS16
+    @State var imagePickerPresented = false
+    @Environment(\.presentationMode) var mode
+    //
     @AppStorage("log_status") private var logStatus: Bool = false
     
     var body: some View {
@@ -150,13 +156,54 @@ struct EZProfilePage: View {
         
         VStack(spacing: 15){
             
-            Image("lbj")
-                .resizable()
-                .aspectRatio(contentMode: .fill)
-                .frame(width: 100, height: 100)
-                .clipShape(Circle())
-                .offset(y: -30)
-                .padding(.bottom,-30)
+//            Image("lbj")
+//                .resizable()
+//                .aspectRatio(contentMode: .fill)
+//                .frame(width: 100, height: 100)
+//                .clipShape(Circle())
+//                .offset(y: -30)
+//                .padding(.bottom,-30)
+            //
+            if let image = image {
+
+                    image
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: 140, height: 140)
+                        .clipShape(Circle())
+                        .foregroundColor(.white)
+
+
+
+                .padding()
+
+
+            } else {
+
+                Button(action: {imagePickerPresented.toggle()}) {
+                    VStack {
+                        Image(systemName: "plus").font(.title).padding(.bottom, 4)
+                        Text("Photo").font(.headline)
+                    }
+                }
+                .padding(30)
+                .foregroundColor(Color.appBlue)
+                .overlay(
+                    Circle()
+                        .stroke(Color.appBlue, lineWidth: 2)
+                )
+                .sheet(isPresented: $imagePickerPresented, onDismiss: loadImage) {
+                     // ImagePicker(image: $selectedImage)
+                    TwitImagePicker(selectedImage: $selectedImage)
+
+                }
+                .padding()
+         }
+    
+            
+            
+            
+            //
             
             Text("Lebron James")
                 .font(.custom(customFont, size: 16))
@@ -199,3 +246,11 @@ struct EZProfilePage_Previews: PreviewProvider {
     }
 }
 
+// Add the image
+extension EZProfilePage {
+    func loadImage() {
+        guard let selectedImage = selectedImage else { return }
+        image = Image(uiImage: selectedImage)
+    }
+    
+}

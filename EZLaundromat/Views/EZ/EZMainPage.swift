@@ -84,6 +84,7 @@ struct EZMainPage: View {
             ZStack{
                 // Detail Page...
                 if let product = sharedData.detailProduct,sharedData.showDetailProduct{
+//                   EZDetail(product: product, animation: animation)
                     
                     EZProductDetailView(product: product, animation: animation)
                         .environmentObject(sharedData)
