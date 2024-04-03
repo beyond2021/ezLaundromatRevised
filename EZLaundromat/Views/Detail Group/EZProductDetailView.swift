@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct EZProductDetailView: View {
     var product: EZProduct
@@ -24,6 +25,9 @@ struct EZProductDetailView: View {
     @Environment(\.presentationMode) var mode
     //
     @State private var isInTheCart: Bool = false
+    // Persistence
+    @Environment(\.modelContext) private var modelContext
+    @Query private var items: [EZProduct]
     
     var body: some View {
         
@@ -48,6 +52,8 @@ struct EZProductDetailView: View {
                     
                     Spacer()
                     
+                   
+                    
                     Button {
                         addToLiked()
                     } label: {
@@ -59,8 +65,11 @@ struct EZProductDetailView: View {
                             .foregroundColor(isLiked() ? .red : Color.black.opacity(0.7))
                     }
 
-
+                        
                 }
+
+
+            
                 .padding()
                 
                 // Product Image...
@@ -268,15 +277,15 @@ struct EZProductDetailView: View {
     }
     
     func addToLiked(){
-        
+
         if let index = sharedData.likedProducts.firstIndex(where: { product in
             return self.product.id == product.id
         }){
-            // Remove from liked....
+            // Remove from liked.... Dislike!
             sharedData.likedProducts.remove(at: index)
         }
         else{
-            // add to liked
+            // add to liked..... LIKE
             sharedData.likedProducts.append(product)
         }
     }

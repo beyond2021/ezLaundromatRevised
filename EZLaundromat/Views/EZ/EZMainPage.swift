@@ -9,8 +9,11 @@ import SwiftUI
 import Firebase
 
 struct EZMainPage: View {
+    //
+    
     // Current Tab...
     @State var currentTab: Tab = .Home
+    
     
     @StateObject var sharedData: EZSharedDataModel = EZSharedDataModel()
     
@@ -20,6 +23,7 @@ struct EZMainPage: View {
     // Hiding Tab Bar...
     init(){
         UITabBar.appearance().isHidden = true
+        
     }
     var body: some View {
         
@@ -85,9 +89,11 @@ struct EZMainPage: View {
                 // Detail Page...
                 if let product = sharedData.detailProduct,sharedData.showDetailProduct{
 //                   EZDetail(product: product, animation: animation)
-                    
-                    EZProductDetailView(product: product, animation: animation)
+                    AnimationDetailView(product: product, animation: animation, tabSelection: $currentTab)
                         .environmentObject(sharedData)
+                    
+//                    EZProductDetailView(product: product, animation: animation)
+//                        .environmentObject(sharedData)
                     // adding transitions...
                         .transition(.asymmetric(insertion: .move(edge: .trailing), removal: .opacity))
                 }

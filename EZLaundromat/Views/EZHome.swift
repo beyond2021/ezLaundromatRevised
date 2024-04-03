@@ -12,6 +12,7 @@ struct EZHome: View {
     var animation: Namespace.ID
     // Shared Data...
     @EnvironmentObject var sharedData: EZSharedDataModel
+    @Namespace var newAnimation
     
     @StateObject var homeData: EZHomeViewModel = EZHomeViewModel()
     @State private var activeIntro: PageIntro = pageIntros[0]

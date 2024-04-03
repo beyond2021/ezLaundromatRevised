@@ -72,7 +72,8 @@ struct EZCartPage: View {
                          
                             // Displaying Products...
                             VStack(spacing: 15){
-                                
+                               
+                                //let uniquePosts = Array(Set(posts))
                                 // For Designing...
                                 ForEach($sharedData.cartProducts){$product in
                                     

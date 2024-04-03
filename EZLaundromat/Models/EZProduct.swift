@@ -9,22 +9,22 @@ import SwiftUI
 import SwiftData
 
 //class EZProduct: Identifiable, Hashable {
-@Model
-final class EZProduct: Identifiable, Hashable {
-//    static func == (lhs: EZProduct, rhs: EZProduct) -> Bool {
-//        lhs.id == rhs.id &&
-//        lhs.type == rhs.type &&
-//        lhs.subtitle == rhs.subtitle &&
-//        lhs.EZProductDescription == rhs.EZProductDescription &&
-//        lhs.price == rhs.price &&
-//        lhs.productImage == rhs.productImage &&
-//        lhs.quantity == rhs.quantity &&
+//@Model
+class EZProduct: Identifiable, Hashable, Decodable {
+    static func == (lhs: EZProduct, rhs: EZProduct) -> Bool {
+        lhs.id == rhs.id &&
+        lhs.type == rhs.type &&
+        lhs.subtitle == rhs.subtitle &&
+        lhs.EZProductDescription == rhs.EZProductDescription &&
+        lhs.price == rhs.price &&
+        lhs.productImage == rhs.productImage &&
+        lhs.quantity == rhs.quantity &&
 //        lhs.deliveryType == rhs.deliveryType &&
-//        lhs.weight == rhs.weight
-//    }
-//    func hash(into hasher: inout Hasher) {
-//        hasher.combine(id)
-//    }
+        lhs.weight == rhs.weight
+    }
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
     
     
     var id = UUID().uuidString
@@ -52,13 +52,13 @@ final class EZProduct: Identifiable, Hashable {
     
 }
 
-enum EZProductType: String, CaseIterable, Equatable, Hashable {
+enum EZProductType: String, CaseIterable, Equatable, Hashable, Decodable {
     case washNFold = "Wash N fold"
     case mens = "Dry Clean Services"
     case womens = "Womens"
    
 }
-enum DeliveryType: String, CaseIterable, Equatable, Hashable {
-    case pickUp = "Pick Up"
-    case delivery = "Delivery"
-}
+//enum DeliveryType: String, CaseIterable, Equatable, Hashable {
+//    case pickUp = "Pick Up"
+//    case delivery = "Delivery"
+//}

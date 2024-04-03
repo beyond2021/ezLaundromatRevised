@@ -18,6 +18,7 @@ struct ContentView: View {
             if logStatus{
                 //MainPage()
                 EZMainPage()
+                   
             }
             else{
                OnBoardingPage()

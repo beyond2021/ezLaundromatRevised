@@ -213,6 +213,25 @@ In contrast, dry cleaning is a much more involved process than wash and fold. Fi
             }
         }
     }
+    func resetAll(){
+        
+        // giving some time to finish animations..
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {[self] in
+            
+            withAnimation{
+                showCart.toggle()
+            }
+            
+            startAnimation = false
+            endAnimation = false
+            selectedSize = ""
+            additemtocart = false
+            showBag = false
+            shoeAnimation = false
+            saveCart = false
+            cartItems += 1
+        }
+    }
     
     
     

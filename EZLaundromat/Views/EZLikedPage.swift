@@ -6,30 +6,25 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct EZLikedPage: View {
     @EnvironmentObject var sharedData: EZSharedDataModel
-    
     // Delete Option...
     @State var showDeleteOption: Bool = false
+    // Persistence
+    @Query private var items: [EZProduct]
+    
     
     var body: some View {
-        //        SwipeAction(cornerRadius: 10, direction: .trailing) {
-        
         NavigationView{
-            
             ScrollView(.vertical, showsIndicators: false) {
-                
                 VStack{
-                    
                     HStack{
-                        
                         Text("Favorites")
                             .font(.custom(customFont, size: 28).bold())
                             .foregroundStyle(.white)
-                        
                         Spacer()
-                        
                         Button {
                             withAnimation{
                                 showDeleteOption.toggle()
@@ -41,23 +36,19 @@ struct EZLikedPage: View {
                                 .frame(width: 25, height: 25)
                         }
                         .opacity(sharedData.likedProducts.isEmpty ? 0 : 1)
-                        
                     }
-                    
                     // checking if liked products are empty...
                     if sharedData.likedProducts.isEmpty{
-                        
+                        // IF LIKE ARRAY IS EMPTY
                         Group{
                             Image("NoLiked")
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
                                 .padding()
                                 .padding(.top,35)
-                            
                             Text("No favorites yet")
                                 .font(.custom(customFont, size: 25))
                                 .fontWeight(.semibold)
-                            
                             Text("Hit the Like button on each product page to save favorite ones.")
                                 .font(.custom(customFont, size: 18))
                                 .foregroundColor(.gray)
@@ -67,10 +58,9 @@ struct EZLikedPage: View {
                         }
                     }
                     else{
-                        //                        SwipeAction(cornerRadius: 10, direction: .trailing) {
+                        // SHOW WHATS IN LIKES ARRAY
                         // Displaying Products...
                         VStack(spacing: 15){
-                            
                             // For Designing...
                             ForEach(sharedData.likedProducts){product in
                                 

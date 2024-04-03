@@ -6,11 +6,7 @@
 //
 
 import SwiftUI
-extension View{
-    func getRect()->CGRect{
-        return UIScreen.main.bounds
-    }
-}
+
 // To Use the custom font on all pages..
 let customFont = "Raleway-Regular"
 let secondaryFont = "Helvetica Black Condensed"
@@ -50,6 +46,9 @@ extension View {
     }
     func  ezButtonStyle() -> some View {
         modifier(EZButton())
+    }
+    func getRect()->CGRect{
+        return UIScreen.main.bounds
     }
     
 }
