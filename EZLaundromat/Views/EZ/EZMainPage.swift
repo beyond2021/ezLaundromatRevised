@@ -42,7 +42,10 @@ struct EZMainPage: View {
                 EZProfilePage()
                     .tag(Tab.Profile)
                 
-                EZCartPage()
+//                EZCartPage()
+//                    .environmentObject(sharedData)
+//                    .tag(Tab.Cart)
+                Cart()
                     .environmentObject(sharedData)
                     .tag(Tab.Cart)
             }

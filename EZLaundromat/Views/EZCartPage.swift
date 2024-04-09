@@ -71,13 +71,12 @@ struct EZCartPage: View {
                         else{
                          
                             // Displaying Products...
-                            VStack(spacing: 15){
+                            VStack(spacing: 10){
                                
                                 //let uniquePosts = Array(Set(posts))
                                 // For Designing...
                                 ForEach($sharedData.cartProducts){$product in
-                                    
-                                    HStack(spacing: 0){
+                                HStack(spacing: 0){
                                         
                                         if showDeleteOption{
                                             

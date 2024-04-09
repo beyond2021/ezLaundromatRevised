@@ -16,80 +16,21 @@ struct EZProfilePage: View {
     @Environment(\.presentationMode) var mode
     //
     @AppStorage("log_status") private var logStatus: Bool = false
+    @AppStorage("showNewDetail") private var showNewDetail: Bool = false
     
     var body: some View {
         
         NavigationStack{
             HeaderView()
-            
-            ScrollView(.vertical, showsIndicators: false) {
-                
-                VStack{
-                    
-                   
-             
-//                    .background(
-//                    
-//                        Color.white
-//                            .cornerRadius(12)
-//                    )
-//                    .padding()
-//                    .padding(.top,40)
-                    
-                    // Custom Navigation Links...
-                        
-                        CustomNavigationLink(title: "Edit Profile") {
-                            
-                            Text("")
-                                .navigationTitle("Edit Profile")
-                                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                                .background(Color("HomeBG").ignoresSafeArea())
-                        }
-                        
-                        
-                        CustomNavigationLink(title: "Shipping address") {
-                            
-                            Text("")
-                                .navigationTitle("Shopping address")
-                                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                                .background(Color("HomeBG").ignoresSafeArea())
-                        }
-                        
-                        CustomNavigationLink(title: "Order history") {
-                            
-                            Text("")
-                                .navigationTitle("Order history")
-                                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                                .background(Color("HomeBG").ignoresSafeArea())
-                        }
-                        
-                        CustomNavigationLink(title: "Cards") {
-                            
-                            Text("")
-                                .navigationTitle("Cards")
-                                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                                .background(Color("HomeBG").ignoresSafeArea())
-                        }
-                        
-                        CustomNavigationLink(title: "Notifications") {
-                            
-                            Text("")
-                                .navigationTitle("Notifications")
-                                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                                .background(Color("HomeBG").ignoresSafeArea())
-                        }
-    
+            List {
+                Section("Detail Type") {
+                    Toggle("Enable New Detail",isOn: $showNewDetail)
                 }
-                .padding(.horizontal,22)
-                .padding(.vertical,20)
+                
             }
-//            .toolbar {
-//                ToolbarItem(placement: .topBarTrailing) {
-//                            Button("Press Me") {
-//                                print("Pressed")
-//                            }
-//                        }
-//                    }
+            
+            
+
             .toolbar {
                             ToolbarItem(placement: .principal) { Text("List").foregroundColor(.white) }
                         }
@@ -254,3 +195,56 @@ extension EZProfilePage {
     }
     
 }
+/*
+ ScrollView(.vertical, showsIndicators: false) {
+     
+     VStack{
+
+         // Custom Navigation Links...
+             
+             CustomNavigationLink(title: "Edit Profile") {
+                 
+                 Text("")
+                     .navigationTitle("Edit Profile")
+                     .frame(maxWidth: .infinity, maxHeight: .infinity)
+                     .background(Color("HomeBG").ignoresSafeArea())
+             }
+             
+             
+             CustomNavigationLink(title: "Shipping address") {
+                 
+                 Text("")
+                     .navigationTitle("Shopping address")
+                     .frame(maxWidth: .infinity, maxHeight: .infinity)
+                     .background(Color("HomeBG").ignoresSafeArea())
+             }
+             
+             CustomNavigationLink(title: "Order history") {
+                 
+                 Text("")
+                     .navigationTitle("Order history")
+                     .frame(maxWidth: .infinity, maxHeight: .infinity)
+                     .background(Color("HomeBG").ignoresSafeArea())
+             }
+             
+             CustomNavigationLink(title: "Cards") {
+                 
+                 Text("")
+                     .navigationTitle("Cards")
+                     .frame(maxWidth: .infinity, maxHeight: .infinity)
+                     .background(Color("HomeBG").ignoresSafeArea())
+             }
+             
+             CustomNavigationLink(title: "Notifications") {
+                 
+                 Text("")
+                     .navigationTitle("Notifications")
+                     .frame(maxWidth: .infinity, maxHeight: .infinity)
+                     .background(Color("HomeBG").ignoresSafeArea())
+             }
+
+     }
+     .padding(.horizontal,22)
+     .padding(.vertical,20)
+ }
+ */
