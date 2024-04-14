@@ -43,8 +43,8 @@ struct Cart: View {
                         .foregroundStyle(.secondary)
                         .padding(.top, 40)
                         .padding()
-                        //                    PaymentButton(action: sharedData.pay)
-                        //                        .padding()
+                                            PaymentButton(action: sharedData.pay)
+                                                .padding()
                         
                     } else {
                         Group{
