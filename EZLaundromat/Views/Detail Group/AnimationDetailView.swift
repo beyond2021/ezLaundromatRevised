@@ -7,17 +7,15 @@
 
 import SwiftUI
 import AVFoundation
+import MessageUI
+import EmailComposer
 
 struct AnimationDetailView: View {
     var product: EZProduct
     @Namespace var newAnimation
     // For Matched Geometry Effect...
     var animation: Namespace.ID
-    // Shared Data Model...
-    // Shared Data Model...
-//    @EnvironmentObject var sharedData: EZSharedDataModel
     @EnvironmentObject var sharedData: EZSharedDataModel
-    
     @EnvironmentObject var homeData: EZHomeViewModel
     //
     @State private var showDescription: Bool = false
@@ -42,8 +40,11 @@ struct AnimationDetailView: View {
     @State private var isInTheCart: Bool = false
     @State private var animationLike: Bool = false
     @State private var offset: CGFloat = 0.0
-   
-   
+    @State var result: Result<MFMailComposeResult, Error>? = nil
+    @State var isShowingMailView = false
+    var session:AVAudioSession = AVAudioSession()
+    @AppStorage("showNewDetail") private var showNewDetail: Bool = false
+    let emailData = EmailData(subject: "Hi there!",recipients: ["tmitchell@ezlaundromat.net"])
     var body: some View {
         ZStack{
             VStack{
@@ -91,7 +92,7 @@ struct AnimationDetailView: View {
                                 .font(.title3)
                                 .foregroundColor(.white)
                                 .padding(10)
-                                .background(Color.appBlue)
+                                .background(Color.appPurple)
                                 .clipShape(Circle())
                                 .overlay(
                                     
@@ -138,10 +139,18 @@ struct AnimationDetailView: View {
                 .blur(radius: showCart ? 50 : 0)
                 .frame(maxWidth: .infinity,maxHeight: .infinity)
                 .padding(.top)
+                .overlay(alignment: .bottom){
+                    Label(
+                        title: { Text("Tap To Order") },
+                        icon: { Image(systemName: "42.circle") }
+                    )
+                    .opacity(showCart ? 0 : 1)
+                    .padding(.vertical, 50)
+                }
                 .zIndex(-1)
                 Spacer()
                     .background(
-                        LinearGradient(colors: [Color.white, .appBlue], startPoint: .top, endPoint: .bottom)
+                        LinearGradient(colors: [Color.white, .appPurple], startPoint: .top, endPoint: .bottom)
                         // Corner Radius for only top side....
                             .clipShape(CustomCorners(corners: [.topLeft,.topRight], radius: 25))
                             .ignoresSafeArea()
@@ -177,11 +186,7 @@ struct AnimationDetailView: View {
                         // .padding(.top)
                         Text(.init("[Website](https://ezlaundromat.net//)"))
                             .accentColor(.white)
-                        
-                        
-                        
                     }
-                    
                     .padding(.horizontal)
                     .frame(height: 100)
                     .frame(maxWidth: .infinity,alignment: .center)
@@ -248,7 +253,8 @@ struct AnimationDetailView: View {
                     .interactiveDismissDisabled()
                     .padding(.top)
             })
-            .background(LinearGradient(colors: [.white, .appBlue], startPoint: .top, endPoint: .bottom))
+            
+            .background(LinearGradient(colors: [.white, .appPurple], startPoint: .top, endPoint: .bottom))
             .onChange(of: endAnimation, initial: false, { oldValue, newValue in
                 if endAnimation{
                     
@@ -375,7 +381,7 @@ struct AnimationDetailView: View {
                         .foregroundColor(productQuantity == 0 ? .black : .white)
                         .padding(.vertical)
                         .frame(maxWidth: .infinity)
-                        .background(productQuantity == 0 ? Color.black.opacity(0.06) : .appBlue)
+                        .background(productQuantity == 0 ? Color.black.opacity(0.06) : .appPurple)
                         .cornerRadius(18)
                 })
                 // disabling button when no size selected...
@@ -402,7 +408,8 @@ struct AnimationDetailView: View {
             .frame(height: 400)
             .padding()
 //            .padding(.bottom,edges == 0 ? 15 : 0)
-            .background(LinearGradient(colors: [.white, .appBlue], startPoint: .top, endPoint: .bottom).clipShape(CustomCorners(corners: [.topLeft,.topRight], radius: 35)))
+            .background(LinearGradient(colors: [.white, .appPurple], startPoint: .top, endPoint: .bottom).clipShape(CustomCorners(corners: [.topLeft,.topRight], radius: 35)))
+//            .background(Color.appBlue)
            
 
     }
@@ -410,17 +417,11 @@ struct AnimationDetailView: View {
     func DescriptionView(_ product: EZProduct) -> some View {
         let headLines: [String] = ["Cleanliness is Key","Where clean meets convenience.", "Clean clothes, happy you!", "Bringing freshness to every thread.","We clean, you relax."].shuffled()
         ScrollView (showsIndicators: false){
-           
-                
                 VStack( spacing: 10, content: {
-         
-                    
                     Image(product.productImage)
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 200, height: 200)
-                   
-                        
                         Text(headLines.first!.capitalized)
                             .minimumScaleFactor(0.5)
                             .font(.title.bold())
@@ -432,9 +433,9 @@ struct AnimationDetailView: View {
                             .font(.custom(customFont, size: 20))
                             .multilineTextAlignment(.leading)
                             .frame(width: 300)
-                        
-                    
-                    Button(action: {}, label: {
+                    Button(action: {
+                        self.isShowingMailView.toggle()
+                    }, label: {
                         Text("Schedule A Pickup")
                             .foregroundStyle(Color.primary)
                             .frame(height: 40)
@@ -446,7 +447,22 @@ struct AnimationDetailView: View {
                             }
                     })
                     .frame(maxWidth: .infinity)
+                    .disabled(!MFMailComposeViewController.canSendMail())
                     .padding(20)
+
+                    .emailComposer(isPresented: $isShowingMailView, emailData: emailData, result:  { result in
+                        switch result {
+                        case .success(let value):
+                            if value == .deviceCannotSendEmails {
+                                print(("Device cannot send emails."))
+                            }
+                            print(value.description)
+                        case .failure(let error):
+                            print(error.localizedDescription)
+                        }
+                    })
+
+                    
                 })
             
             
@@ -594,64 +610,3 @@ let sizes = ["1","2","3","4"]
 func *(lhs:Double, rhs:Int) -> Double {
     return lhs * Double(rhs)
 }
-
-
-
-//                let columns = Array(repeating: GridItem(.flexible(), spacing: 15), count: 4)
-//                LazyVGrid(columns: columns, alignment: .leading, spacing: 10, content: {
-//                    ForEach(sizes,id: \.self){size in
-//                        Button(action: {
-//                            withAnimation{
-//                                selectedSize = size
-//                                finalPrice = updatePrice(selectedSize, originalPrice: product.price)
-//                            }
-//                        }, label: {
-//                            if product.type == "Wash N fold" {
-//                                if size == "1" {
-//                                    Text("\(size) pound")
-//                                        .font(.caption)
-//                                        .lineLimit(1)
-//                                        .fontWeight(.semibold)
-//                                        .foregroundColor(selectedSize == size ? .white : .black)
-//                                        .padding(.vertical,5)
-//                                        .frame(maxWidth: .infinity)
-//                                        .background(selectedSize == size ? .appBlue : Color.black.opacity(0.06))
-//                                        .cornerRadius(10)
-//                                } else {
-//                                    Text("\(size) pounds")
-//                                        .font(.caption)
-//                                        .lineLimit(1)
-//                                        .fontWeight(.semibold)
-//                                        .foregroundColor(selectedSize == size ? .white : .black)
-//                                        .padding(.vertical,5)
-//                                        .frame(maxWidth: .infinity)
-//                                        .background(selectedSize == size ? .appBlue : Color.black.opacity(0.06))
-//                                        .cornerRadius(10)
-//                                }
-//                            } else {
-//                                if size == "1" {
-//                                    Text("\(size) piece")
-//                                        .font(.caption)
-//                                        .lineLimit(1)
-//                                        .fontWeight(.semibold)
-//                                        .foregroundColor(selectedSize == size ? .white : .black)
-//                                        .padding(.vertical,5)
-//                                        .frame(maxWidth: .infinity)
-//                                        .background(selectedSize == size ? .appBlue : Color.black.opacity(0.06))
-//                                        .cornerRadius(10)
-//                                } else {
-//                                    Text("\(size) pieces")
-//                                        .font(.caption)
-//                                        .lineLimit(1)
-//                                        .fontWeight(.semibold)
-//                                        .foregroundColor(selectedSize == size ? .white : .black)
-//                                        .padding(.vertical,5)
-//                                        .frame(maxWidth: .infinity)
-//                                        .background(selectedSize == size ? .appBlue : Color.black.opacity(0.06))
-//                                        .cornerRadius(10)
-//                                }
-//                            }
-//                        })
-//                    }
-//                })
-   

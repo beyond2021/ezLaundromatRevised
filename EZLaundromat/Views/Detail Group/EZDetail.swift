@@ -139,15 +139,18 @@ struct EZDetail: View {
                         
                         Text("Total")
                             .font(.custom(customFont, size: 17))
+                            .foregroundStyle(Color.white)
                         
                         Spacer()
                         
                         Text("$\(product.price)")
                             .font(.custom(customFont, size: 20).bold())
-                            .foregroundStyle(Color.appBlue)
+//                            .foregroundStyle(Color.appBlue)
+                            .foregroundStyle(Color.white)
                     }
+                    
                     .padding(.vertical,20)
-                   // .padding(.top, 40)
+                   
                     
                     
                     // Add button...

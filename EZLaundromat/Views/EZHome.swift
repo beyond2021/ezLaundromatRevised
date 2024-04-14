@@ -16,6 +16,7 @@ struct EZHome: View {
     
     @StateObject var homeData: EZHomeViewModel = EZHomeViewModel()
     @State private var activeIntro: PageIntro = pageIntros[0]
+    @AppStorage("showNewDetail") private var showNewDetail: Bool = false
     
     var body: some View {
 //        GeometryReader {
@@ -95,13 +96,9 @@ struct EZHome: View {
                                     Text("ABOUT US")
                                         .font(.custom(customFont, size: 14))
                                 }
-//                                .padding()
-//                                .foregroundStyle(overText ? Color.white : Color.appBlue)
-//                                .background(overText ? Color.appBlue: Color.clear)
-//                                .cornerRadius(6.0)
+
                                 .modifier(EZButton())
-                                
- 
+  
                             }
                             .frame(maxWidth: .infinity,alignment: .leading)
                             .padding(.leading)
@@ -139,7 +136,14 @@ struct EZHome: View {
                 }
                 .frame(maxWidth: .infinity,maxHeight: .infinity)
                 //.background(Color("HomeBG"))
-                .background( LinearGradient(colors: [Color.appBlue, Color.white], startPoint: .top, endPoint: .bottom))
+                .background( 
+                    
+                    showNewDetail == false ? LinearGradient(colors: [Color.appBlue,Color.appBlue,  Color.white], startPoint: .top, endPoint: .bottom) : LinearGradient(colors: [Color.appPurple,Color.appPurple, Color.white], startPoint: .top, endPoint: .bottom)
+//                    showNewDetail == false ? Color.appBlue : Color.appPurple
+                    
+                  
+                
+                )
                 // Updating data whenever tab changes...
                 .onChange(of: homeData.ezProductType, initial: false) { oldValue, newValue in
                     homeData.filterProductByType()
@@ -230,7 +234,7 @@ struct EZHome: View {
                 .font(.title2)
                 .fontWeight(.bold)
                 .minimumScaleFactor(0.5)
-//                .foregroundStyle(.white)
+                .foregroundStyle(.primary)
               //  .padding(.top)
             
             Text(product.subtitle)
@@ -238,20 +242,22 @@ struct EZHome: View {
                 .font(.caption)
                 .fontWeight(.semibold)
                 .minimumScaleFactor(0.5)
-                .foregroundColor(Color.white)
+                .foregroundColor(.secondary)
             
             Text("$\(product.price)")
 //                .font(.custom(secondaryFont, size: 20))
                 .fontWeight(.bold)
-                .foregroundColor(Color.white)
+                .foregroundColor(.secondary)
                 .padding(.top,5)
         }
         .padding(.horizontal,20)
         .padding(.bottom,22)
         .background(
-            LinearGradient(colors: [Color.white, Color.appBlue], startPoint: .top, endPoint: .bottom)
-//            Color.white
-                .cornerRadius(15)
+            showNewDetail == false ? LinearGradient(colors: [Color.appBlue, Color.white], startPoint: .top, endPoint: .bottom).cornerRadius(15) : LinearGradient(colors: [Color.appPink, Color.white], startPoint: .top, endPoint: .bottom).cornerRadius(15)
+                
+            
+//            LinearGradient(colors: [Color.white, Color.appBlue], startPoint: .top, endPoint: .bottom)
+//                .cornerRadius(15)
         )
         // Showing Product detail when tapped...
         .onTapGesture {
@@ -277,7 +283,7 @@ struct EZHome: View {
                 .font(.custom(customFont, size: 15))
                 .fontWeight(.semibold)
             // Changing Color based on Current product Type...
-                .foregroundColor(homeData.ezProductType == type ? Color.white : Color.black)
+                .foregroundColor(homeData.ezProductType == type ? Color.white : .gray)
                 .padding(.bottom,10)
             // Adding Indicator at bottom...
                 .overlay(

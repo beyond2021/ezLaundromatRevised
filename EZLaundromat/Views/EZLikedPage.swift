@@ -14,6 +14,7 @@ struct EZLikedPage: View {
     @State var showDeleteOption: Bool = false
     // Persistence
     @Query private var items: [EZProduct]
+    @AppStorage("showNewDetail") private var showNewDetail: Bool = false
     
     
     var body: some View {
@@ -95,10 +96,11 @@ struct EZLikedPage: View {
             .navigationBarHidden(true)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(
-                LinearGradient(colors: [Color.appBlue, Color.white], startPoint: .top, endPoint: .bottom)
-                
-                //                Color("HomeBG")
-                    .ignoresSafeArea()
+//                LinearGradient(colors: [Color.appBlue, Color.white], startPoint: .top, endPoint: .bottom)
+//                
+//                //                Color("HomeBG")
+//                    .ignoresSafeArea()
+                showNewDetail == false ? LinearGradient(colors: [Color.appBlue, Color.white], startPoint: .top, endPoint: .bottom).ignoresSafeArea() : LinearGradient(colors: [Color.appPurple, Color.white], startPoint: .top, endPoint: .bottom).ignoresSafeArea()
             )
             
         }

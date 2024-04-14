@@ -1,4 +1,5 @@
 {
+  "originHash" : "e838752c096e31f8ded1435fcb43bee45d9f86377c41e655b8e14e0d259a6e28",
   "pins" : [
     {
       "identity" : "abseil-cpp-binary",
@@ -16,6 +17,15 @@
       "state" : {
         "revision" : "3e464dad87dad2d29bb29a97836789bf0f8f67d2",
         "version" : "10.18.1"
+      }
+    },
+    {
+      "identity" : "emailcomposer",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/gabrieltheodoropoulos/EmailComposer.git",
+      "state" : {
+        "revision" : "6c35d94b4abd760c3d1eb513ea59baabaecad607",
+        "version" : "1.0.2"
       }
     },
     {
@@ -127,5 +137,5 @@
       }
     }
   ],
-  "version" : 2
+  "version" : 3
 }

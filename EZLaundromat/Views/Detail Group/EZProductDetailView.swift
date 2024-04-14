@@ -7,6 +7,8 @@
 
 import SwiftUI
 import SwiftData
+import MessageUI
+import EmailComposer
 
 struct EZProductDetailView: View {
     var product: EZProduct
@@ -28,6 +30,10 @@ struct EZProductDetailView: View {
     // Persistence
     @Environment(\.modelContext) private var modelContext
     @Query private var items: [EZProduct]
+    //
+    @State var result: Result<MFMailComposeResult, Error>? = nil
+    @State var isShowingMailView = false
+
     
     var body: some View {
         
@@ -117,6 +123,22 @@ struct EZProductDetailView: View {
                         .font(.custom(customFont, size: 16).bold())
                         .accentColor(.red)
                         .foregroundStyle(.black)
+                    Button(action: {
+                               self.isShowingMailView.toggle()
+                           }) {
+                               Text("Contact us.")
+                                   .font(.custom(customFont, size: 16).bold())
+                                   .accentColor(.red)
+                                   .foregroundStyle(.red)
+                           }
+                           .disabled(!MFMailComposeViewController.canSendMail())
+                           .emailComposer(isPresented: $isShowingMailView)
+//                           .sheet(isPresented: $isShowingMailView) {
+//                               MailView(result: self.$result)
+//                           }
+//                    
+                    
+                    
                        // .padding(.top)
                     Text(.init("[Website](https://ezlaundromat.net//)"))
                         .accentColor(.black)
@@ -149,15 +171,16 @@ struct EZProductDetailView: View {
 
                     HStack{
                         
-                        Text("Total")
+                        Text("Total".uppercased())
                             .font(.custom(customFont, size: 17))
                         
                         Spacer()
                         
                         Text("$\(product.price)")
                             .font(.custom(customFont, size: 20).bold())
-                            .foregroundStyle(Color.appBlue)
+                            
                     }
+                    .foregroundStyle(Color.white)
                     .padding(.vertical,20)
                    // .padding(.top, 40)
                     
@@ -238,7 +261,9 @@ struct EZProductDetailView: View {
                     .font(.custom(customFont, size: 20))
                     .multilineTextAlignment(.leading)
                     .frame(width: 300)
-                Button(action: {}, label: {
+                Button(action: {
+                    
+                }, label: {
                     Text("Schedule A Pickup")
                         .foregroundStyle(Color.primary)
                         .frame(height: 40)
@@ -251,6 +276,7 @@ struct EZProductDetailView: View {
                 })
                 .frame(maxWidth: .infinity)
                 .padding(20)
+                
             })
             
         }

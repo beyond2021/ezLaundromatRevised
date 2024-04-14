@@ -13,7 +13,7 @@ import SwiftData
 struct EZLaundromatApp: App {
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
-            EZProduct.self,
+            EZProduct.self, Profile.self,
         ])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
 
@@ -31,5 +31,6 @@ struct EZLaundromatApp: App {
             ContentView()
         }
         .modelContainer(sharedModelContainer)
+//        .modelContainer(for: Profile.self)
     }
 }

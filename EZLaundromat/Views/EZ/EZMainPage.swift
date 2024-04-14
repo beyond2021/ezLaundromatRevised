@@ -10,6 +10,7 @@ import Firebase
 
 struct EZMainPage: View {
     //
+    @AppStorage("showNewDetail") private var showNewDetail: Bool = false
     
     // Current Tab...
     @State var currentTab: Tab = .Home
@@ -66,43 +67,73 @@ struct EZMainPage: View {
                             .frame(width: 22, height: 22)
                         // Applying little shadow at bg...
                             .background(
-                            
-                                Color.appBlue
+                                showNewDetail ? Color.appPurple
                                     .opacity(0.1)
                                     .cornerRadius(5)
-                                // blurring...
+                                    // blurring...
                                     .blur(radius: 5)
-                                // Making little big...
+                                    // Making little big...
                                     .padding(-7)
                                     .opacity(currentTab == tab ? 1 : 0)
                                 
+                                
+                                
+                                : Color.appBlue
+//                                    Color.appBlue
+                                    //                                Color.appBlue
+                                    .opacity(0.1)
+                                    .cornerRadius(5)
+                                    // blurring...
+                                    .blur(radius: 5)
+                                    // Making little big...
+                                    .padding(-7)
+                                    .opacity(currentTab == tab ? 1 : 0)
+                                
+                                
                             )
                             .frame(maxWidth: .infinity)
-                            .foregroundColor(currentTab == tab ? Color.appBlue : Color.black.opacity(0.3))
+                            .foregroundColor(currentTab == tab ? Color.appPurple : Color.black.opacity(0.3))
+                            
                     }
                 }
             }
             .padding([.horizontal,.top])
             .padding(.bottom,10)
+            
         }
         .background(Color("HomeBG").ignoresSafeArea())
+//        .background(Color.appLightBlue.ignoresSafeArea())
         .overlay(
         
             ZStack{
                 // Detail Page...
                 if let product = sharedData.detailProduct,sharedData.showDetailProduct{
 //                   EZDetail(product: product, animation: animation)
-                    AnimationDetailView(product: product, animation: animation, tabSelection: $currentTab)
-                        .environmentObject(sharedData)
+                    if showNewDetail {
+                        AnimationDetailView(product: product, animation: animation, tabSelection: $currentTab)
+                            .environmentObject(sharedData)
+                            .transition(.asymmetric(insertion: .move(edge: .trailing), removal: .opacity))
+                    } else {
+                        EZProductDetailView(product: product, animation: animation)
+                            .environmentObject(sharedData)
+                            .transition(.asymmetric(insertion: .move(edge: .trailing), removal: .opacity))
+                        
+                    }
+                   
                     
 //                    EZProductDetailView(product: product, animation: animation)
 //                        .environmentObject(sharedData)
                     // adding transitions...
-                        .transition(.asymmetric(insertion: .move(edge: .trailing), removal: .opacity))
+                        
                 }
             }
         )
     }
+//    func getMainAppTint() -> Color {
+//        if currentTab == tab && showNewDetail == true {
+//            Color.appBlue : Color.black.opacity(0.3)
+//        }
+//    }
 }
 
 struct EZMainPage_Previews: PreviewProvider {

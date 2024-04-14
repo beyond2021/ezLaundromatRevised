@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Firebase
+import PhotosUI
 
 struct EZProfilePage: View {
     @State private var selectedImage: UIImage?
@@ -17,6 +18,7 @@ struct EZProfilePage: View {
     //
     @AppStorage("log_status") private var logStatus: Bool = false
     @AppStorage("showNewDetail") private var showNewDetail: Bool = false
+    static let appTint:Color = Color.appBlue
     
     var body: some View {
         
@@ -37,9 +39,10 @@ struct EZProfilePage: View {
             .navigationBarHidden(true)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(
-              LinearGradient(colors: [Color.appBlue, .white], startPoint: .top, endPoint: .bottom)
-
-                    .ignoresSafeArea()
+//              LinearGradient(colors: [Color.appBlue, .white], startPoint: .top, endPoint: .bottom)
+//
+//                    .ignoresSafeArea()
+                showNewDetail == false ? LinearGradient(colors: [Color.appBlue, Color.white], startPoint: .top, endPoint: .bottom).ignoresSafeArea() : LinearGradient(colors: [Color.appPurple, Color.white], startPoint: .top, endPoint: .bottom).ignoresSafeArea()
             )
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
@@ -48,13 +51,12 @@ struct EZProfilePage: View {
                             }
                         }
                     }
-//            .toolbar(content: {
-//                ToolbarItem(placement: .topBarTrailing) {
-//                    Button("Log Out.") {
-//                        
-//                    }
+            .task {
+//                if let data = try? await selectedImage?.loadTransferable(type: Data.self) {
+//                    selectedImage = data
 //                }
-//            })
+            }
+
         }
     }
     

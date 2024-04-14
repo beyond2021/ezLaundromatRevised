@@ -45,10 +45,7 @@ struct ProductRow: View {
                             }
                         }
                 }
-            Stepper("\(productQuantity) \(product.type == "" ? "llbs" : "PIECES")", value: $productQuantity, in: 1...50)
-//                .font(.title3.bold())
-//                .tint(Color.white)
-//                .foregroundStyle(productQuantity == 0 ? .white : .white)
+            Stepper("\(productQuantity) \(getStrings())", value: $productQuantity, in: 1...50)
                 .foregroundStyle(Color.black)
                 .tint(productQuantity == 0 ? Color.appBlue : .red)
                 .onChange(of: productQuantity, initial: false) { oldValue, newValue in
@@ -64,9 +61,23 @@ struct ProductRow: View {
         .padding(.horizontal)
         .padding(.vertical)
         .frame(maxWidth: .infinity, alignment: .leading)
-        .background(.ultraThinMaterial)
+//        .background(.ultraThinMaterial)
+        .background(Color.appLightBlue)
     .cornerRadius(10)
     .onAppear{productQuantity = product.quantity}
+    }
+    func getStrings() -> String {
+        if product.type == "Wash N fold" && productQuantity > 1 {
+            return "llbs"
+        } else if product.type == "Wash N fold" && productQuantity == 1 {
+            return "llb"
+        } else if product.type != "Wash N fold" && productQuantity > 1 {
+            return "pieces"
+        } else if product.type != "Wash N fold" && productQuantity == 1 {
+            return "piece"
+        } else {
+            return ""
+        }
     }
 }
 
