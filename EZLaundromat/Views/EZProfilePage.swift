@@ -21,56 +21,46 @@ struct EZProfilePage: View {
     static let appTint:Color = Color.appBlue
     
     var body: some View {
-        
         NavigationStack{
             HeaderView()
             List {
                 Section("Detail Type") {
-                    Toggle("Enable New Detail",isOn: $showNewDetail)
+                    Toggle("Purple App",isOn: $showNewDetail)
+                        .tint(Color.appPurple)
                 }
                 
             }
-            
-            
-
             .toolbar {
-                            ToolbarItem(placement: .principal) { Text("List").foregroundColor(.white) }
-                        }
+                ToolbarItem(placement: .principal) { Text("List").foregroundColor(.white) }
+            }
             .navigationBarHidden(true)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(
-//              LinearGradient(colors: [Color.appBlue, .white], startPoint: .top, endPoint: .bottom)
-//
-//                    .ignoresSafeArea()
                 showNewDetail == false ? LinearGradient(colors: [Color.appBlue, Color.white], startPoint: .top, endPoint: .bottom).ignoresSafeArea() : LinearGradient(colors: [Color.appPurple, Color.white], startPoint: .top, endPoint: .bottom).ignoresSafeArea()
             )
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
-                            Button("Press Me") {
-                                print("Pressed")
-                            }
-                        }
+                    Button("Press Me") {
+                        print("Pressed")
                     }
-            .task {
-//                if let data = try? await selectedImage?.loadTransferable(type: Data.self) {
-//                    selectedImage = data
-//                }
+                }
             }
-
+            .task {
+                //                if let data = try? await selectedImage?.loadTransferable(type: Data.self) {
+                //                    selectedImage = data
+                //                }
+            }
+            
         }
     }
     
     // Avoiding new Structs...
     @ViewBuilder
     func CustomNavigationLink<Detail: View>(title: String,@ViewBuilder content: @escaping ()->Detail)->some View{
-        
-        
         NavigationLink {
             content()
         } label: {
-            
             HStack{
-                
                 Text(title)
                     .font(.custom(customFont, size: 17))
                     .fontWeight(.semibold)
@@ -98,31 +88,17 @@ struct EZProfilePage: View {
             .foregroundStyle(.white)
         
         VStack(spacing: 15){
-            
-//            Image("lbj")
-//                .resizable()
-//                .aspectRatio(contentMode: .fill)
-//                .frame(width: 100, height: 100)
-//                .clipShape(Circle())
-//                .offset(y: -30)
-//                .padding(.bottom,-30)
-            //
             if let image = image {
-
                     image
                         .resizable()
                         .scaledToFill()
                         .frame(width: 140, height: 140)
                         .clipShape(Circle())
                         .foregroundColor(.white)
-
-
-
                 .padding()
 
 
             } else {
-
                 Button(action: {imagePickerPresented.toggle()}) {
                     VStack {
                         Image(systemName: "plus").font(.title).padding(.bottom, 4)
@@ -142,22 +118,13 @@ struct EZProfilePage: View {
                 }
                 .padding()
          }
-    
-            
-            
-            
-            //
-            
             Text("Lebron James")
                 .font(.custom(customFont, size: 16))
                 .fontWeight(.semibold)
-            
             HStack(alignment: .top, spacing: 10) {
-                
                 Image(systemName: "location.north.circle.fill")
                     .foregroundColor(.gray)
                     .rotationEffect(.init(degrees: 180))
-                
                 Text("Address: 94 Amsterdam Ave, Teaneck NJ")
                     .font(.custom(customFont, size: 15))
             }

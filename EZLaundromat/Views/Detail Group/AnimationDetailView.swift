@@ -40,7 +40,7 @@ struct AnimationDetailView: View {
     @State private var isInTheCart: Bool = false
     @State private var animationLike: Bool = false
     @State private var offset: CGFloat = 0.0
-    @State var result: Result<MFMailComposeResult, Error>? = nil
+//    @State var result: Result<MFMailComposeResult, Error>? = nil
     @State var isShowingMailView = false
     var session:AVAudioSession = AVAudioSession()
     @AppStorage("showNewDetail") private var showNewDetail: Bool = false
@@ -61,9 +61,7 @@ struct AnimationDetailView: View {
                                 .font(.title2)
                                 .foregroundColor(Color.black.opacity(0.7))
                         }
-                        
                         Spacer()
-                        
                         Button {
                             addToLiked()
                         } label: {
@@ -74,19 +72,15 @@ struct AnimationDetailView: View {
                                 .frame(width: 30, height: 30)
                                 .foregroundColor(isLiked() ? .red : Color.black.opacity(0.7))
                                 .shadow(radius: 10.0)
-//                                .offset(y: offset)
-//                                .onTapGesture { offset -= 100.0 }
-//                                .animation(Animation.easeInOut(duration: 1.0), value: offset)
-//                                .offset(y: offset)
+//                                .animation(isLiked() ? .easeOut(duration: 1): .bouncy)
                         }
                     }
                     .overlay(
-                        
                         Button(action: {
-                                    withAnimation {
-                                        tabSelection = .Cart
-                                        sharedData.showDetailProduct = false
-                                    }
+                            withAnimation {
+                                tabSelection = .Cart
+                                sharedData.showDetailProduct = false
+                            }
                         }, label: {
                             Image(systemName: "bag.fill")
                                 .font(.title3)
@@ -141,10 +135,12 @@ struct AnimationDetailView: View {
                 .padding(.top)
                 .overlay(alignment: .bottom){
                     Label(
-                        title: { Text("Tap To Order") },
+                        title: { Text(isInTheCart ? "Tap To Remove" : "Tap to Order") },
                         icon: { Image(systemName: "42.circle") }
                     )
                     .opacity(showCart ? 0 : 1)
+//                    .opacity(isInTheCart ? 0 : 1 )
+                    .foregroundStyle(Color.white)
                     .padding(.vertical, 50)
                 }
                 .zIndex(-1)
@@ -156,34 +152,26 @@ struct AnimationDetailView: View {
                             .ignoresSafeArea()
                     )
                 if showDetailText {
-                    
                     VStack( spacing: 5) {
-                        
                         Text(product.title)
                         //                        .font(.custom(customFont, size: 30).bold())
                             .font(.title.bold())
                             .fontWeight(.bold)
                             .foregroundStyle(.white)
-                        
                         Text(product.subtitle)
                             .font(.title3)
                             .fontWeight(.bold)
                             .foregroundStyle(.white)
-                        
                         Text("427 Anderson Avenue, Fairview NJ 07022")
                             .font(.custom(customFont, size: 12).bold())
                             .foregroundStyle(.white)
-                        
                         Text("+1 (201) 366-4766")
                             .font(.custom(customFont, size: 16).bold())
                             .foregroundStyle(.white)
-                        // .padding(.top)
-                        
                         Text("tmitchell@ezlaundromat.net")
                             .font(.custom(customFont, size: 16).bold())
                             .accentColor(.red)
                             .foregroundStyle(.white)
-                        // .padding(.top)
                         Text(.init("[Website](https://ezlaundromat.net//)"))
                             .accentColor(.white)
                     }
@@ -191,33 +179,24 @@ struct AnimationDetailView: View {
                     .frame(height: 100)
                     .frame(maxWidth: .infinity,alignment: .center)
                     .offset(y: 200)
-                    
                 }
                 AddToCartAnimation(animation: newAnimation, product: product)
                     .padding(.bottom)
                     .zIndex(2)
-                    
-                //                    .background(Color.clear)
                 // hiding view when shoe is not selected...
                 // like Bottom Sheet...
                 // also closing when animation started...
                     .offset(y: showCart ? startAnimation ? 500 : 0 : 500)
                 if startAnimation{
-                    
                     VStack{
-                        
                         Spacer()
-                        
                         ZStack{
-                            
-                            // Circle ANimatio Effect...
-                            
+                            // Circle ANimatio Effect...\
                             Color.white
                                 .frame(width: shoeAnimation ? 100 : getRect().width * 1.3, height: shoeAnimation ? 100 : getRect().width * 1.3)
                                 .clipShape(Circle())
                             // Opacit...
                                 .opacity(shoeAnimation ? 1 : 0)
-                            
                             Image(product.productImage)
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
@@ -228,11 +207,9 @@ struct AnimationDetailView: View {
                         // scaling effect...
                         .scaleEffect(saveCart ? 0.6 : 1)
                         .onAppear(perform:performAnimations)
-                        
                         if !saveCart{
                             Spacer()
                         }
-                        
                         Image(systemName: "bag\(additemtocart ? ".fill" : "")")
                             .font(.title)
                             .foregroundColor(.white)
@@ -253,16 +230,13 @@ struct AnimationDetailView: View {
                     .interactiveDismissDisabled()
                     .padding(.top)
             })
-            
             .background(LinearGradient(colors: [.white, .appPurple], startPoint: .top, endPoint: .bottom))
             .onChange(of: endAnimation, initial: false, { oldValue, newValue in
                 if endAnimation{
-                    
                     // reset...
                     resetAll()
                 }
             })
-            
             .onAppear {
                 productPrice = product.price
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { // 1 sec delay
@@ -272,14 +246,13 @@ struct AnimationDetailView: View {
                     
                 }
             }
-           
             
-            if animationLike {
+//            if animationLike {
 //                withAnimation {
 //                    LikeView(isLiked: $animationLike)
 //                }
-               
-            }
+//               
+//            }
         }
     }
     
@@ -535,16 +508,12 @@ struct AnimationDetailView: View {
         }
 
     }
-    
     func isLiked()->Bool{
-        
         return sharedData.likedProducts.contains { product in
             return self.product.id == product.id
         }
     }
-
     func removeFromCart() {
-        
         if let index = sharedData.cartProducts.firstIndex(where: { product in
             return self.product.id == product.id
         }){
@@ -552,7 +521,6 @@ struct AnimationDetailView: View {
             sharedData.cartProducts.remove(at: index)
         }
     }
-    
     func addToLiked(){
 
         if let index = sharedData.likedProducts.firstIndex(where: { product in
@@ -602,10 +570,6 @@ struct AnimationDetailView: View {
         }
     }
 }
-
-//var edges = UIApplication.shared.windows.first?.safeAreaInsets.bottom
-
-
 let sizes = ["1","2","3","4"]
 func *(lhs:Double, rhs:Int) -> Double {
     return lhs * Double(rhs)
